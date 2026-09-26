@@ -1,0 +1,26 @@
+project:
+  type: book
+
+book:
+  title: "临床研究统计图 | 从理解原理到优雅绘图"
+  author: "统计方法札记"
+  date: "2026/9/26"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - 1-KM生存分析.qmd
+    - 2-森林图.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+
+
+
+

@@ -1,0 +1,16 @@
+body {
+  font-family: "Noto serif SC";
+}
+.title {
+  text-align: center;
+}
+p {
+  text-indent: 0em;
+}
+div[id^="fig-"] {
+  text-align: center !important;
+}
+div[id^="tab-"] {
+  text-align: center !important;
+}
+
