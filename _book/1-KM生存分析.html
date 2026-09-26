@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; 生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线 – 临床研究统计图 | 从理解原理到优雅绘图</title>
+<title>1&nbsp; 生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线 – 临床研究统计图 | 从理解原理到优雅绘图</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -61,7 +61,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -72,7 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./2-森林图.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -153,7 +173,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1-KM生存分析.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1-KM生存分析.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
@@ -186,26 +206,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./1-KM生存分析.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2-森林图.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -224,9 +232,9 @@ window.Quarto = {
     <h2 id="toc-title">目录</h2>
    
   <ul>
-  <li><a href="#生存曲线中的核心概念" id="toc-生存曲线中的核心概念" class="nav-link active" data-scroll-target="#生存曲线中的核心概念"><span class="header-section-number">2.1</span> 生存曲线中的核心概念</a></li>
-  <li><a href="#为什么选择ggsurvfit包绘制km生存曲线" id="toc-为什么选择ggsurvfit包绘制km生存曲线" class="nav-link" data-scroll-target="#为什么选择ggsurvfit包绘制km生存曲线"><span class="header-section-number">2.2</span> 为什么选择ggsurvfit包绘制KM生存曲线？</a></li>
-  <li><a href="#生存曲线实例" id="toc-生存曲线实例" class="nav-link" data-scroll-target="#生存曲线实例"><span class="header-section-number">2.3</span> 生存曲线实例</a></li>
+  <li><a href="#生存曲线中的核心概念" id="toc-生存曲线中的核心概念" class="nav-link active" data-scroll-target="#生存曲线中的核心概念"><span class="header-section-number">1.1</span> 生存曲线中的核心概念</a></li>
+  <li><a href="#为什么选择ggsurvfit包绘制km生存曲线" id="toc-为什么选择ggsurvfit包绘制km生存曲线" class="nav-link" data-scroll-target="#为什么选择ggsurvfit包绘制km生存曲线"><span class="header-section-number">1.2</span> 为什么选择ggsurvfit包绘制KM生存曲线？</a></li>
+  <li><a href="#生存曲线实例" id="toc-生存曲线实例" class="nav-link" data-scroll-target="#生存曲线实例"><span class="header-section-number">1.3</span> 生存曲线实例</a></li>
   </ul>
 </nav>
     </div>
@@ -235,7 +243,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></h1>
 </div>
 
 
@@ -259,8 +267,8 @@ window.Quarto = {
 <li><p>尝试自己用R绘制生存曲线，却发现网上搜到的代码版本老旧、片段零散，难以使用…</p></li>
 </ul>
 <p>为解决KM生存曲线绘图的难题，我们从核心概念、工具和实例三方面详细介绍，即使是零基础也能轻松绘制顶刊级生存曲线。</p>
-<section id="生存曲线中的核心概念" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="生存曲线中的核心概念"><span class="header-section-number">2.1</span> 生存曲线中的核心概念</h2>
+<section id="生存曲线中的核心概念" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="生存曲线中的核心概念"><span class="header-section-number">1.1</span> 生存曲线中的核心概念</h2>
 <p>为避免统计和绘图出现错误，首先要深入理解KM生存分析的三个核心概念：</p>
 <ul>
 <li>结局事件（Event）</li>
@@ -278,14 +286,14 @@ window.Quarto = {
 <p><span class="math display">\[\chi^2 = \dfrac{(O_1 - E_1)^2}{V}\]</span></p>
 <p>KM曲线本身无法获得HR值及其置信区间，若需要HR值，可使用Cox比例风险模型来计算。</p>
 </section>
-<section id="为什么选择ggsurvfit包绘制km生存曲线" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="为什么选择ggsurvfit包绘制km生存曲线"><span class="header-section-number">2.2</span> 为什么选择ggsurvfit包绘制KM生存曲线？</h2>
+<section id="为什么选择ggsurvfit包绘制km生存曲线" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="为什么选择ggsurvfit包绘制km生存曲线"><span class="header-section-number">1.2</span> 为什么选择ggsurvfit包绘制KM生存曲线？</h2>
 <p>与传统统计软件相比，R语言能够实现高度灵活的可视化调整，生成符合期刊要求的高质量图。目前survival+survminer包是绘制KM曲线的主流，一键出图，简洁美观，但它的问题在于和ggplot2兼容性差，细节调整不够灵活。我们也可以直接使用ggplot2基础函数绘图，但过程相对复杂。</p>
 <p>ggsurvfit包可以很好地解决了这一问题，它完全基于ggplot2语法，代码简洁优雅，专门绘制KM生存曲线、累积发生率曲线，细节调整更加地灵活。</p>
 <p>一般情况下，我们可以用survival+survminer进行探索性的分析，最终出图则使用ggsurvfit包。</p>
 </section>
-<section id="生存曲线实例" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="生存曲线实例"><span class="header-section-number">2.3</span> 生存曲线实例</h2>
+<section id="生存曲线实例" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="生存曲线实例"><span class="header-section-number">1.3</span> 生存曲线实例</h2>
 <p>本例将用到的packages如下:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载必要的包</span></span>
@@ -294,32 +302,32 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggsurvfit)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>本例用到的模拟数据df如<a href="#tbl-survival-data" class="quarto-xref">表&nbsp;<span>2.1</span></a>所示，包括709名患者的随访时间（month）、是否发生结局事件（event）和分组（group），绘制生存曲线将用到以上3个变量。数据中还包括了sex, age_group, race等变量，在以后的cox回归分析中可以作为协变量纳入模型。</p>
+<p>本例用到的模拟数据df如<a href="#tbl-survival-data" class="quarto-xref">表&nbsp;<span>1.1</span></a>所示，包括709名患者的随访时间（month）、是否发生结局事件（event）和分组（group），绘制生存曲线将用到以上3个变量。数据中还包括了sex, age_group, race等变量，在以后的cox回归分析中可以作为协变量纳入模型。</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-survival-data" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-survival-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;2.1: 生存曲线数据（前10行）
+表&nbsp;1.1: 生存曲线数据（前10行）
 </figcaption>
 <div aria-describedby="tbl-survival-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="udydqyocyr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#udydqyocyr table {
+<div id="wridgzxjwv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wridgzxjwv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#udydqyocyr thead, #udydqyocyr tbody, #udydqyocyr tfoot, #udydqyocyr tr, #udydqyocyr td, #udydqyocyr th {
+#wridgzxjwv thead, #wridgzxjwv tbody, #wridgzxjwv tfoot, #wridgzxjwv tr, #wridgzxjwv td, #wridgzxjwv th {
   border-style: none;
 }
 
-#udydqyocyr p {
+#wridgzxjwv p {
   margin: 0;
   padding: 0;
 }
 
-#udydqyocyr .gt_table {
+#wridgzxjwv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -345,12 +353,12 @@ window.Quarto = {
   border-left-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_caption {
+#wridgzxjwv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#udydqyocyr .gt_title {
+#wridgzxjwv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -362,7 +370,7 @@ window.Quarto = {
   border-bottom-width: 0;
 }
 
-#udydqyocyr .gt_subtitle {
+#wridgzxjwv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -374,7 +382,7 @@ window.Quarto = {
   border-top-width: 0;
 }
 
-#udydqyocyr .gt_heading {
+#wridgzxjwv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -386,13 +394,13 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_bottom_border {
+#wridgzxjwv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_col_headings {
+#wridgzxjwv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -407,7 +415,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_col_heading {
+#wridgzxjwv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -427,7 +435,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#udydqyocyr .gt_column_spanner_outer {
+#wridgzxjwv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -439,15 +447,15 @@ window.Quarto = {
   padding-right: 4px;
 }
 
-#udydqyocyr .gt_column_spanner_outer:first-child {
+#wridgzxjwv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#udydqyocyr .gt_column_spanner_outer:last-child {
+#wridgzxjwv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#udydqyocyr .gt_column_spanner {
+#wridgzxjwv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -459,11 +467,11 @@ window.Quarto = {
   width: 100%;
 }
 
-#udydqyocyr .gt_spanner_row {
+#wridgzxjwv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#udydqyocyr .gt_group_heading {
+#wridgzxjwv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -489,7 +497,7 @@ window.Quarto = {
   text-align: left;
 }
 
-#udydqyocyr .gt_empty_group_heading {
+#wridgzxjwv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -504,15 +512,15 @@ window.Quarto = {
   vertical-align: middle;
 }
 
-#udydqyocyr .gt_from_md > :first-child {
+#wridgzxjwv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#udydqyocyr .gt_from_md > :last-child {
+#wridgzxjwv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#udydqyocyr .gt_row {
+#wridgzxjwv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -531,7 +539,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#udydqyocyr .gt_stub {
+#wridgzxjwv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -544,7 +552,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#udydqyocyr .gt_stub_row_group {
+#wridgzxjwv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -558,15 +566,15 @@ window.Quarto = {
   vertical-align: top;
 }
 
-#udydqyocyr .gt_row_group_first td {
+#wridgzxjwv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#udydqyocyr .gt_row_group_first th {
+#wridgzxjwv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#udydqyocyr .gt_summary_row {
+#wridgzxjwv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -576,16 +584,16 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#udydqyocyr .gt_first_summary_row {
+#wridgzxjwv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_first_summary_row.thick {
+#wridgzxjwv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#udydqyocyr .gt_last_summary_row {
+#wridgzxjwv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -595,7 +603,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_grand_summary_row {
+#wridgzxjwv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -605,7 +613,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#udydqyocyr .gt_first_grand_summary_row {
+#wridgzxjwv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -615,7 +623,7 @@ window.Quarto = {
   border-top-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_last_grand_summary_row_top {
+#wridgzxjwv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -625,11 +633,11 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_striped {
+#wridgzxjwv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#udydqyocyr .gt_table_body {
+#wridgzxjwv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -638,7 +646,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_footnotes {
+#wridgzxjwv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -652,7 +660,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_footnote {
+#wridgzxjwv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -661,7 +669,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#udydqyocyr .gt_sourcenotes {
+#wridgzxjwv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -675,7 +683,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#udydqyocyr .gt_sourcenote {
+#wridgzxjwv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -683,72 +691,72 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#udydqyocyr .gt_left {
+#wridgzxjwv .gt_left {
   text-align: left;
 }
 
-#udydqyocyr .gt_center {
+#wridgzxjwv .gt_center {
   text-align: center;
 }
 
-#udydqyocyr .gt_right {
+#wridgzxjwv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#udydqyocyr .gt_font_normal {
+#wridgzxjwv .gt_font_normal {
   font-weight: normal;
 }
 
-#udydqyocyr .gt_font_bold {
+#wridgzxjwv .gt_font_bold {
   font-weight: bold;
 }
 
-#udydqyocyr .gt_font_italic {
+#wridgzxjwv .gt_font_italic {
   font-style: italic;
 }
 
-#udydqyocyr .gt_super {
+#wridgzxjwv .gt_super {
   font-size: 65%;
 }
 
-#udydqyocyr .gt_footnote_marks {
+#wridgzxjwv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#udydqyocyr .gt_asterisk {
+#wridgzxjwv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#udydqyocyr .gt_indent_1 {
+#wridgzxjwv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#udydqyocyr .gt_indent_2 {
+#wridgzxjwv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#udydqyocyr .gt_indent_3 {
+#wridgzxjwv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#udydqyocyr .gt_indent_4 {
+#wridgzxjwv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#udydqyocyr .gt_indent_5 {
+#wridgzxjwv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#udydqyocyr .katex-display {
+#wridgzxjwv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#udydqyocyr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wridgzxjwv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -933,7 +941,7 @@ window.Quarto = {
 groupTreatment_A 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
 </div>
 </div>
-<p>用ggsurvfit函数绘制KM生存曲线，如<a href="#fig-生存曲线" class="quarto-xref">图&nbsp;<span>2.1</span></a>所示。</p>
+<p>用ggsurvfit函数绘制KM生存曲线，如<a href="#fig-生存曲线" class="quarto-xref">图&nbsp;<span>1.1</span></a>所示。</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> fit <span class="sc">|&gt;</span> <span class="fu">ggsurvfit</span>() <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_confidence_interval</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
@@ -986,7 +994,7 @@ groupTreatment_A 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
 <img src="1-KM生存分析_files/figure-html/fig-生存曲线-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-生存曲线-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-图&nbsp;2.1: ggsurvfit包绘制的KM生存曲线
+图&nbsp;1.1: ggsurvfit包绘制的KM生存曲线
 </figcaption>
 </figure>
 </div>
@@ -995,6 +1003,14 @@ groupTreatment_A 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
 <p>add_*()是发挥核心功能的函数，同时我们进行了大量的个体化调整，包括字体、字号、图例位置、坐标轴范围、风险表的统计指标等，最终生成了美观的高质量KM生存曲线。前文中计算得出的HR值及置信区间也已经在图中标注出来了。</p>
 
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-ich_e9" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use. <em>Statistical Principles for Clinical Trials E9</em>. <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a> (1998年).</div>
+</div>
+<div id="ref-ich_e9_r1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use. <em>Estimands and Sensitivity Analysis in Clinical Trials E9 (R1)</em>. <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a> (2019年).</div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -1400,13 +1416,13 @@ groupTreatment_A 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./2-森林图.html" class="pagination-link" aria-label="森林图只会看不会画？从统计概念到R代码一次讲清楚">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,13 +7,14 @@ book:
   date: "2026/9/26"
   chapters:
     - index.qmd
-    - intro.qmd
     - 1-KM生存分析.qmd
     - 2-森林图.qmd
-    - summary.qmd
     - references.qmd
 
 bibliography: references.bib
+csl: nature.csl
+nocite: |
+  @ich_e9, @ich_e9_r1
 
 format:
   html:
