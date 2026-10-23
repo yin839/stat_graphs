@@ -9,7 +9,7 @@
 <meta name="author" content="统计方法札记">
 <meta name="dcterms.date" content="2026-09-26">
 
-<title>临床研究统计图 | 从理解原理到优雅绘图</title>
+<title>临床研究常见统计图 - 从理解统计原理到优雅绘图</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,27 +28,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -58,7 +38,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./1-KM生存分析.html" rel="next">
+<link href="./01生存分析.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -98,6 +78,7 @@ div.csl-indent {
 }</script>
 
 
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -124,7 +105,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">临床研究统计图 | 从理解原理到优雅绘图</a> 
+      <a href="./">临床研究常见统计图 - 从理解统计原理到优雅绘图</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -142,20 +123,56 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./1-KM生存分析.html" class="sidebar-item-text sidebar-link">
+  <a href="./01生存分析.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2-森林图.html" class="sidebar-item-text sidebar-link">
+  <a href="./02森林图.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./03箱线图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">原来箱线图也可以很高级 | 带抖动散点的箱线图和配对箱线图</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04泳道图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">泳道图：让每位患者的治疗轨迹“被看见”</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05冲积图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">冲积图：一张图看懂研究对象在多个分类维度间的分组变迁</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06Table-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">出版级Table 1一键生成 | 可导出word直接投稿</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07AE汇总表.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">告别耗时费力 | 快速生成符合规范的不良事件汇总表</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08金字塔图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">金字塔图：让不良事件组间对比一目了然！</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09累积发生率图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">竞争事件当作删失处理？你可能一直在高估结局事件的发生率</span></span></a>
   </div>
 </li>
     </ul>
@@ -177,7 +194,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">临床研究统计图 | 从理解原理到优雅绘图</h1>
+<h1 class="title">临床研究常见统计图 - 从理解统计原理到优雅绘图</h1>
 </div>
 
 
@@ -211,14 +228,6 @@ div.csl-indent {
 <p>本书将从统计学原理到R代码详细介绍临床常用的统计图。</p>
 
 
-<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
-<div id="ref-ich_e9" class="csl-entry" role="listitem">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use. <em>Statistical Principles for Clinical Trials E9</em>. <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a> (1998).</div>
-</div>
-<div id="ref-ich_e9_r1" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use. <em>Estimands and Sensitivity Analysis in Clinical Trials E9 (R1)</em>. <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a> (2019).</div>
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -626,7 +635,7 @@ div.csl-indent {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./1-KM生存分析.html" class="pagination-link" aria-label="生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线">
+      <a href="./01生存分析.html" class="pagination-link" aria-label="生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线">
         <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

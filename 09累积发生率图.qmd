@@ -1,0 +1,235 @@
+---
+title: "竞争事件当作删失处理？你可能一直在高估结局事件的发生率"
+format:
+    html:
+        theme: cosmo
+        toc: true
+        number-sections: true
+        css: style.css
+knitr:
+    opts_chunk:
+        dev: ragg_png
+        fig.asp: 0.618
+        out.width: "90%"
+        fig.align: center
+bibliography: references.bib
+reference-section-title: "参考文献"
+csl: nature.csl
+---
+\
+竞争风险（competing risk），简单来说就是当某一类事件发生后，我们所关心的结局事件就没有机会再出现。举例来说，如果研究关注的结局事件是心血管死亡，那么因癌症等非心血管原因导致的死亡就是竞争事件。患者一旦死于癌症，心血管死亡就不可能再出现，这就是竞争风险。那么，在有竞争风险的情况下，我们做生存分析能否将竞争事件按删失处理呢？
+
+## 把竞争事件当成删失来处理，会带来什么问题？
+
+生存数据的一个显著特征是”删失”（censoring）概念。删失定义中隐含的一个概念是：如果研究时间延长或没有患者退出研究，那么对所有患者而言，最终都会观察到所关注的结局事件。生存分析的常规统计方法基于一个重要的假设，即独立或非信息性删失。其含义是：在给定时间点上，仍处于随访中的患者与删失的患者，未来发生结局事件的风险相同。
+
+在分析竞争风险数据时，研究者可能会在竞争事件发生时对患者进行删失处理。例如以心血管死亡为结局事件时，研究者在患者死于[非]{.underline}心血管原因时将其视为删失。这样做可能带来的问题是：
+
+- 违反非信息性删失的假设。这样做等于是将死于[非]{.underline}心血管原因的患者由**仍然存活且尚未死于任何原因**的患者来代表，显然是不合理的；
+- 即使竞争事件相互独立，在竞争事件发生时对患者进行删失也可能导致错误的结论。因为删失其实是假定了竞争事件不可能发生，在心血管死亡这个例子中，相当于是假定[非]{.underline}心血管原因死亡不可能发生；
+- 当我们将竞争事件视为删失时，通常会高估结局事件的发生率。一项心衰人群研究中，Kaplan‑Meier估算的5年心血管死亡率为43%；而校正竞争风险后，真实累积发生率仅36.8%，高估幅度达到6.2%[@austin_introduction_2016]。
+
+## Fine‑Gray亚分布风险模型
+
+分析竞争风险数据应使用累积发生率函数（Cumulative Incidence Function, CIF）和Fine‑Gray亚分布风险模型（subdistribution hazard model）。亚分布风险模型由Fine和Gray于1999年提出[@fine_proportional_1999]，也称为CIF回归模型。
+
+累积发生率函数（CIF）用于在考虑竞争事件的情况下估计结局事件的发生率，通常采用Aalen-Johansen方法进行非参数估计。当需要比较两组间累积发生率的差异时，采用Gray检验（Gray's test）。
+
+Fine‑Gray亚分布风险模型在考虑竞争事件的前提下，对协变量作用于主要结局事件发生率的效应进行建模，因而特别适用于在有竞争风险的情况下进行风险预测。
+
+## 为什么使用tidycmprsk包来绘制累积发生率曲线？
+
+在竞争风险分析领域，cmprsk包是经典的、应用最广泛的工具之一，文献引用量高，期刊认可度好。它的局限在于输出格式不够友好、可视化薄弱。
+
+tidycmprsk是由Daniel D. Sjoberg等人开发的R包，专注于竞争风险分析（Competing Risks Analysis），采用tidyverse风格设计。它本质上是cmprsk的tidyverse风格封装，在保持核心算法不变的基础上，实现了结构化的输出，显著提升了可视化效果。
+
+riskRegression包是另一个功能强大的工具，可覆盖竞争风险模型从建模、预测到模型验证与评价的全流程，在竞争风险预测模型研究领域应用广泛，但学习门槛相对较高。
+
+相比之下，对于绘制累积发生率曲线而言，tidycmprsk是更优的选择。
+
+
+## 竞争风险框架下的累积发生率曲线实例
+
+下面我们通过一个实例来看一下如何使用R的tidycmprsk包来绘制竞争风险框架下的累积发生率曲线。
+
+首先加载必要的包：
+
+```{r}
+#| warning: false
+
+library(tidyverse)
+library(tidycmprsk)
+library(ggsurvfit)
+```
+
+本例使用的模拟数据如[@tbl-cr-data]所示。数据集共包含1000个样本、10个变量。结局状态（status）包括删失（censored）、疾病相关死亡（Death from disease，结局事件）和非疾病相关死亡（Death from other causes，竞争事件）；协变量包括性别（sex）、年龄分组（age_group）、疾病阶段（stage）、细胞遗传学风险（cytogenetic_risk）和 ECOG 评分（ecog_score），均为分类变量。
+
+```{r}
+#| label: tbl-cr-data
+#| tbl-cap: "竞争风险模拟数据"
+#| echo: false
+
+# 构造威布尔分布模拟数据（删失占30%左右）
+set.seed(123)
+n <- 1000
+group <- sample(c("Treatment", "Placebo"), n, replace = TRUE)
+hazard_ratio <- 0.6  # 治疗组风险降低
+shape1 <- 1.5
+shape2 <- 2.0
+shape_c <- 1.0
+scale_c <- 26 #如需要删失比例高，则scale_c小一些；如需删失比例低，则scale_c大一些
+
+# 根据分组调整尺度参数（HR < 1 → 尺度更大 → 时间更长）
+scale1 <- ifelse(group == "Treatment", 20 / hazard_ratio, 20)
+scale2 <- ifelse(group == "Treatment", 32 / hazard_ratio, 32)
+
+# 每位患者分配3个时间
+T1 <- rweibull(n, shape = shape1, scale = scale1) # Death from disease
+T2 <- rweibull(n, shape = shape2, scale = scale2) # Death from other causes
+C  <- rweibull(n, shape = shape_c, scale = scale_c) # Censored
+latent_times <- cbind(T1, T2, C)
+month   <- apply(latent_times, 1, min) # 选择3个时间当中最短的一个，即模拟研究中实际观察到的时间
+status <- apply(latent_times, 1, which.min)  # 对应T1、T2、C的Index，即1="Death from disease", 2="Death from other causes", 3="Censored"
+status[status == 3] <- 0                     # 删失编码设为0
+
+# 整理数据
+df <- tibble(id = 1:n, month = round(month, 1), status, group) |>
+  mutate(
+    status = if_else(month > 36, 0, status), #最长随访截止至36个月
+    status = factor(status, levels = c(0, 1, 2), labels = c("Censored", "Death from disease", "Death from other causes")),
+    month = if_else(month > 36, 36, month),
+    group = factor(group, levels = c("Placebo", "Treatment"))
+  )
+
+# 增加协变量
+df_Treatment <- df |>
+  dplyr::filter(group == "Treatment") |>
+  mutate(
+    sex = sample(c(rep("Male", 299), rep("Female", 207))),
+    age_group = sample(c(rep("<65-year", 370), rep("\u226565-year", 136))),
+    race = sample(c(rep("White", 468), rep("Other", 38))),
+    stage = sample(c(rep("I", 264), rep("II", 161), rep("III", 81))),
+    cytogenetic_risk = sample(c(rep("Standard", 374), rep("High", 107), rep("Intermediate", 25))),
+    ecog_score = sample(c(rep("0", 313), rep("\u22651", 193)))
+  )
+df_Placebo <- df |>
+  dplyr::filter(group == "Placebo") |>
+  mutate(
+    sex = sample(c(rep("Male", 284), rep("Female", 210))),
+    age_group = sample(c(rep("<65-year", 371), rep("\u226565-year", 123))),
+    race = sample(c(rep("White", 448), rep("Other", 46))),
+    stage = sample(c(rep("I", 247), rep("II", 173), rep("III", 74))),
+    cytogenetic_risk = sample(c(rep("Standard", 369), rep("High", 108), rep("Intermediate", 17))),
+    ecog_score = sample(c(rep("0", 317), rep("\u22651", 177)))
+  )
+df_cr <- bind_rows(df_Treatment, df_Placebo) |>
+  mutate(across(sex:ecog_score, as_factor))
+
+gt::gt(df_cr[c(20:24, 801:805),]) |>
+  gt::cols_align(align = "center", columns = everything()) |>
+  gt::tab_options(
+    table.font.size = 12,
+    column_labels.font.weight = "bold",
+    table.width = gt::pct(90)
+  )
+```
+
+首先采用Aalen-Johansen法估计各组的累积发生率，组间比较采用Gray检验。随后，采用Fine-Gray亚分布风险模型分析各协变量对累积发生率的影响，用亚分布风险比（subdistribution hazard ratio, SHR）及其95%置信区间来表示效应的大小。
+
+```{r}
+#| eval: false
+fit <- cuminc(Surv(month, status) ~ group, data = df_cr)
+fine_gray_model <- crr(Surv(month, status) ~ group + sex + age_group + race + stage + cytogenetic_risk + ecog_score, data = df_cr)
+```
+
+通过`tidy(fit, times = c(12, 24, 36))`可提取第12、24、36个月各组结局事件和竞争事件的累积发生率估计值及95%置信区间，如[@tbl-survival-rate]所示。
+
+```{r}
+#| label: tbl-survival-rate
+#| tbl-cap: "12、24、36个月时的累积发生率"
+#| echo: false
+
+fit <- cuminc(Surv(month, status) ~ group, data = df_cr)
+tidy(fit, times = c(12, 24, 36))[1:7] |>
+  gt::gt() |>
+  gt::cols_align(align = "center", columns = everything()) |>
+  gt::fmt_number(columns = c(estimate, std.error, conf.low, conf.high), decimals = 2) |>
+  gt::tab_options(
+    table.font.size = 12,
+    column_labels.font.weight = "bold",
+    table.width = gt::pct(90)
+  )
+```
+
+Fine-Gray亚分布风险模型的主要输出结果如[@tbl-fine-gray-model]所示。结果显示，与安慰剂组相比，治疗组疾病相关死亡的亚分布风险降低38%（SHR=0.62，p<0.05），差异具有统计学意义；其余协变量（性别、年龄分组、疾病阶段、细胞遗传学风险、ECOG评分）与疾病相关死亡的亚分布风险未见显著关联（p值均大于0.05）。
+
+```{r}
+#| label: tbl-fine-gray-model
+#| tbl-cap: "Fine‑Gray亚分布风险模型输出结果"
+#| echo: false
+
+crr(Surv(month, status) ~ group + sex + age_group + race + stage + cytogenetic_risk + ecog_score, data = df_cr) |>
+  broom::tidy(exponentiate = TRUE, conf.int = TRUE) |>
+  gt::gt() |>
+  gt::fmt_number(columns = c(estimate, std.error, statistic, conf.low, conf.high), decimals = 2) |>
+  gt::fmt_number(columns = p.value, decimals = 4) |>
+  gt::cols_align(align = "center", columns = everything()) |>
+  gt::tab_options(
+    table.font.size = 12,
+    column_labels.font.weight = "bold",
+    table.width = gt::pct(90)
+  )
+```
+
+接下来就可以正式绘图啦。运行以下代码，绘制竞争风险框架下的累积发生率曲线，如[@fig-cumulative-incidence]所示。
+
+```{r}
+#| label: fig-cumulative-incidence
+#| fig-cap: "竞争风险框架下的累积发生率曲线"
+
+font_size = 9
+p <- fit |> ggcuminc(
+  outcome = c("Death from disease"), #可只选择关注的结局事件
+) +
+  add_confidence_interval() +
+  add_pvalue(location = "annotation", size = 8 * 0.35) +
+  add_censor_mark(size = 0.5) +
+  add_risktable(
+    times = seq(0, 36, by = 3),
+    risktable_stats = "{n.risk} ({cum.event})",
+    risktable_group = "risktable_stats",
+    stats_label = "Number At Risk (events)",
+    combine_groups = FALSE,
+    family = "Arial",          #控制表格数字的字体
+    size = font_size * 0.35 * 0.9,   #控制表格数字的大小
+    theme = list(
+      theme_risktable_default(),
+      theme(
+        text = element_text(family = "Arial", size = font_size),
+        axis.text.y = element_text(size = font_size * 1.2)
+      ) #控制标题、坐标轴
+    )
+  ) +
+  scale_color_manual(values = brewer.pal(9, "Set1")) +
+  scale_fill_manual(values = brewer.pal(9, "Set1")) +
+  scale_linetype_manual(values = 1:2) +
+  scale_x_continuous(breaks = seq(0, 36, by = 3)) +
+  scale_y_continuous(limits = c(0, 0.75), labels = scales::label_percent()) +
+  labs(
+    x = "Month",
+    y = "Cumulative Incidence\n of Disease-Related Death",
+    title = "Cumulative Incidence under the Competing Risks Framework"
+  ) +
+  theme_ggsurvfit_default() +
+  theme(
+    text = element_text(family = "Arial", size = font_size),
+    plot.title = element_text(size = font_size * 1.5, face = "bold"),
+    legend.position = c(0.1, 0.8),
+    legend.justification = "left",
+    legend.background = element_blank(),
+    axis.title.y = element_text(vjust = 1.5)
+  )
+print(p)
+```
+
+

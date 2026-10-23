@@ -2,25 +2,28 @@ project:
   type: book
 
 book:
-  title: "临床研究统计图 | 从理解原理到优雅绘图"
+  title: "临床研究常见统计图 - 从理解统计原理到优雅绘图"
   author: "统计方法札记"
   date: "2026/9/26"
   chapters:
     - index.qmd
-    - 1-KM生存分析.qmd
-    - 2-森林图.qmd
-    - references.qmd
-
+    - 01生存分析.qmd
+    - 02森林图.qmd
+    - 03箱线图.qmd
+    - 04泳道图.qmd
+    - 05冲积图.qmd
+    - 06Table-1.qmd
+    - 07AE汇总表.qmd
+    - 08金字塔图.qmd
+    - 09累积发生率图.qmd
 bibliography: references.bib
 csl: nature.csl
-nocite: |
-  @ich_e9, @ich_e9_r1
-
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: cosmo
+    toc: true
+    number-sections: true
+    css: style.css
 
 
 

@@ -1,8 +1,8 @@
-body {
-  font-family: "Noto serif SC";
-}
 .title {
   text-align: center;
+}
+body {
+  font-family: "Arial", "Microsoft YaHei", sans-serif;
 }
 p {
   text-indent: 0em;
@@ -13,4 +13,3 @@ div[id^="fig-"] {
 div[id^="tab-"] {
   text-align: center !important;
 }
-

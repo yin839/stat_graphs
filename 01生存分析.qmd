@@ -7,15 +7,18 @@ format:
         toc: true
         number-sections: true
         css: "style.css"
-        lang: zh
-        mainfont: "Noto Serif SC"
 knitr:
   opts_chunk:
     dev: ragg_png
     fig.asp: 0.618
     out.width: "80%"
     fig.align: center
+bibliography: references.bib
+reference-section-title: "参考文献"
+csl: nature.csl
 ---
+
+<br>
 
 Kaplan-Meier（KM）生存曲线是临床研究中使用率最高的统计图表之一，但很多小伙伴在绘图时，总会遇到各种棘手的问题：
 
@@ -95,7 +98,7 @@ gt::gt(df[1:10, ]) |>
 
 fit <- survfit2(Surv(month, event) ~ group, data = df)
 hr <- df |>
-  mutate(group = relevel(factor(group), ref = "Treatment_B")) |>
+  mutate(group = relevel(factor(group), ref = "Placebo")) |>
   (\(x) coxph(Surv(month, event) ~ group, data = x))() |>
   summary()
 hr$conf.int

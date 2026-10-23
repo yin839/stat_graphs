@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; 森林图只会看不会画？从统计概念到R代码一次讲清楚 – 临床研究统计图 | 从理解原理到优雅绘图</title>
+<title>2&nbsp; 森林图只会看不会画？从统计概念到R代码一次讲清楚 – 临床研究常见统计图 - 从理解统计原理到优雅绘图</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -91,8 +91,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./1-KM生存分析.html" rel="prev">
+<link href="./03箱线图.html" rel="next">
+<link href="./01生存分析.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -102,7 +102,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7de7514555351e31c0506ecc2dab164e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-631496449bf32ff9b0bb69a6bfd9195d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -117,17 +117,17 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "没有结果",
-    "search-matching-documents-text": "匹配的文档",
-    "search-copy-link-title": "复制搜索链接",
-    "search-hide-matches-text": "隐藏其它匹配结果",
-    "search-more-match-text": "更多匹配结果",
-    "search-more-matches-text": "更多匹配结果",
-    "search-clear-button-title": "清除",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "提交",
-    "search-label": "搜索"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -141,13 +141,13 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2-森林图.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02森林图.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -159,12 +159,12 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">临床研究统计图 | 从理解原理到优雅绘图</a> 
+      <a href="./">临床研究常见统计图 - 从理解统计原理到优雅绘图</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="搜索"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -177,20 +177,56 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./1-KM生存分析.html" class="sidebar-item-text sidebar-link">
+  <a href="./01生存分析.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2-森林图.html" class="sidebar-item-text sidebar-link active">
+  <a href="./02森林图.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./03箱线图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">原来箱线图也可以很高级 | 带抖动散点的箱线图和配对箱线图</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04泳道图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">泳道图：让每位患者的治疗轨迹“被看见”</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05冲积图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">冲积图：一张图看懂研究对象在多个分类维度间的分组变迁</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06Table-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">出版级Table 1一键生成 | 可导出word直接投稿</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07AE汇总表.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">告别耗时费力 | 快速生成符合规范的不良事件汇总表</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08金字塔图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">金字塔图：让不良事件组间对比一目了然！</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09累积发生率图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">竞争事件当作删失处理？你可能一直在高估结局事件的发生率</span></span></a>
   </div>
 </li>
     </ul>
@@ -200,12 +236,13 @@ div.csl-indent {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">目录</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#关于森林图的几个基本概念" id="toc-关于森林图的几个基本概念" class="nav-link active" data-scroll-target="#关于森林图的几个基本概念"><span class="header-section-number">2.1</span> 关于森林图的几个基本概念</a></li>
   <li><a href="#为什么用forestploter包绘制森林图" id="toc-为什么用forestploter包绘制森林图" class="nav-link" data-scroll-target="#为什么用forestploter包绘制森林图"><span class="header-section-number">2.2</span> 为什么用forestploter包绘制森林图？</a></li>
   <li><a href="#森林图实例" id="toc-森林图实例" class="nav-link" data-scroll-target="#森林图实例"><span class="header-section-number">2.3</span> 森林图实例</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">参考文献</a></li>
   </ul>
 </nav>
     </div>
@@ -231,10 +268,11 @@ div.csl-indent {
 </header>
 
 
+<p><br></p>
 <p>当我们从一张森林图中看到A、B两个亚组的结果分别是HR 0.56 (0.28 - 1.12), p = 0.099和HR 0.33 (0.22 - 0.49), p &lt; 0.001时会怎样理解呢？结合P值自然会想到治疗药物对A亚组无效，而对B亚组是有效的。但这样解读正确吗？</p>
 <section id="关于森林图的几个基本概念" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="关于森林图的几个基本概念"><span class="header-section-number">2.1</span> 关于森林图的几个基本概念</h2>
-<p>亚组通常由患者的一个或多个内在或外在因素来定义，而且应该具有一定的临床意义，例如把试验参与者按年龄分为18-65岁和≥65岁两个年龄组，或者按ECOG评分和基因突变水平分成不同的亚组<span class="citation" data-cites="NMPA_subgroup_analysis"><sup><a href="references.html#ref-NMPA_subgroup_analysis" role="doc-biblioref">1</a></sup></span>。</p>
+<p>亚组通常由患者的一个或多个内在或外在因素来定义，而且应该具有一定的临床意义，例如把试验参与者按年龄分为18-65岁和≥65岁两个年龄组，或者按ECOG评分和基因突变水平分成不同的亚组<span class="citation" data-cites="NMPA_subgroup_analysis"><sup><a href="#ref-NMPA_subgroup_analysis" role="doc-biblioref">1</a></sup></span>。</p>
 <p>在不同的研究场景中，亚组分析可以评估治疗效应在不同基线特征患者中的一致性，也可以探索治疗效应在不同临床表现或基因特征患者中是否存在差异，从而找出潜在的获益人群。多数情况下，亚组分析不用于因果推断，而是描述性和探索性的，在森林图中也是如此。</p>
 <p>生存数据的亚组分析需要用到Cox比例风险模型，风险比（Hazard Ratio, HR）是Cox模型的核心统计量，表示两组在整个随访期间的风险比值。例如在其中一个亚组内，治疗组和对照组的HR是0.33表示治疗组的风险与对照组相比下降了67%；95%置信区间0.22-0.49不跨1，可以判断两组有统计学差异。</p>
 <p>需要注意的是Cox模型需要满足等比例风险假设，即假设两组的风险比在整个随访期间保持恒定，我们可以用survival::cox.zph()函数检验PH假设。</p>
@@ -257,34 +295,34 @@ div.csl-indent {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forestploter)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forestploter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>本例用到的模拟数据df如<a href="#tbl-raw-data" class="quarto-xref">表&nbsp;<span>2.1</span></a>所示，trt_group, sex, age_group, race, iss_stage, cytogenetic_risk, ecog_score等变量均应设置为因子类型。特别需要注意的是，我们希望得到的是治疗组与对照组相比的HR，因此在设置因子水平时应把对照组设置为参考水平，本例中为Treatment vs Placebo。</p>
+<p>本例用到的模拟数据df如<a href="#tbl-raw-data" class="quarto-xref">Table&nbsp;<span>2.1</span></a>所示，trt_group, sex, age_group, race, iss_stage, cytogenetic_risk, ecog_score等变量均应设置为因子类型。特别需要注意的是，我们希望得到的是治疗组与对照组相比的HR，因此在设置因子水平时应把对照组设置为参考水平，本例中为Treatment vs Placebo。</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-raw-data" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-raw-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;2.1: 森林图原始数据（前10行）
+Table&nbsp;2.1: 森林图原始数据（前10行）
 </figcaption>
 <div aria-describedby="tbl-raw-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="yopgqecbfy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yopgqecbfy table {
+<div id="oyhgyferkq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oyhgyferkq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yopgqecbfy thead, #yopgqecbfy tbody, #yopgqecbfy tfoot, #yopgqecbfy tr, #yopgqecbfy td, #yopgqecbfy th {
+#oyhgyferkq thead, #oyhgyferkq tbody, #oyhgyferkq tfoot, #oyhgyferkq tr, #oyhgyferkq td, #oyhgyferkq th {
   border-style: none;
 }
 
-#yopgqecbfy p {
+#oyhgyferkq p {
   margin: 0;
   padding: 0;
 }
 
-#yopgqecbfy .gt_table {
+#oyhgyferkq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -310,12 +348,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_caption {
+#oyhgyferkq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yopgqecbfy .gt_title {
+#oyhgyferkq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -327,7 +365,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#yopgqecbfy .gt_subtitle {
+#oyhgyferkq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -339,7 +377,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#yopgqecbfy .gt_heading {
+#oyhgyferkq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -351,13 +389,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_bottom_border {
+#oyhgyferkq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_col_headings {
+#oyhgyferkq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -372,7 +410,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_col_heading {
+#oyhgyferkq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -392,7 +430,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#yopgqecbfy .gt_column_spanner_outer {
+#oyhgyferkq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -404,15 +442,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#yopgqecbfy .gt_column_spanner_outer:first-child {
+#oyhgyferkq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yopgqecbfy .gt_column_spanner_outer:last-child {
+#oyhgyferkq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yopgqecbfy .gt_column_spanner {
+#oyhgyferkq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -424,11 +462,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#yopgqecbfy .gt_spanner_row {
+#oyhgyferkq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yopgqecbfy .gt_group_heading {
+#oyhgyferkq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -454,7 +492,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#yopgqecbfy .gt_empty_group_heading {
+#oyhgyferkq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -469,15 +507,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#yopgqecbfy .gt_from_md > :first-child {
+#oyhgyferkq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yopgqecbfy .gt_from_md > :last-child {
+#oyhgyferkq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yopgqecbfy .gt_row {
+#oyhgyferkq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -496,7 +534,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#yopgqecbfy .gt_stub {
+#oyhgyferkq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -509,7 +547,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#yopgqecbfy .gt_stub_row_group {
+#oyhgyferkq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -523,15 +561,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#yopgqecbfy .gt_row_group_first td {
+#oyhgyferkq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yopgqecbfy .gt_row_group_first th {
+#oyhgyferkq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yopgqecbfy .gt_summary_row {
+#oyhgyferkq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -541,16 +579,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#yopgqecbfy .gt_first_summary_row {
+#oyhgyferkq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_first_summary_row.thick {
+#oyhgyferkq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yopgqecbfy .gt_last_summary_row {
+#oyhgyferkq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -560,7 +598,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_grand_summary_row {
+#oyhgyferkq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -570,7 +608,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#yopgqecbfy .gt_first_grand_summary_row {
+#oyhgyferkq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -580,7 +618,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_last_grand_summary_row_top {
+#oyhgyferkq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -590,11 +628,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_striped {
+#oyhgyferkq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yopgqecbfy .gt_table_body {
+#oyhgyferkq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -603,7 +641,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_footnotes {
+#oyhgyferkq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -617,7 +655,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_footnote {
+#oyhgyferkq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -626,7 +664,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#yopgqecbfy .gt_sourcenotes {
+#oyhgyferkq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -640,7 +678,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#yopgqecbfy .gt_sourcenote {
+#oyhgyferkq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -648,72 +686,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#yopgqecbfy .gt_left {
+#oyhgyferkq .gt_left {
   text-align: left;
 }
 
-#yopgqecbfy .gt_center {
+#oyhgyferkq .gt_center {
   text-align: center;
 }
 
-#yopgqecbfy .gt_right {
+#oyhgyferkq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yopgqecbfy .gt_font_normal {
+#oyhgyferkq .gt_font_normal {
   font-weight: normal;
 }
 
-#yopgqecbfy .gt_font_bold {
+#oyhgyferkq .gt_font_bold {
   font-weight: bold;
 }
 
-#yopgqecbfy .gt_font_italic {
+#oyhgyferkq .gt_font_italic {
   font-style: italic;
 }
 
-#yopgqecbfy .gt_super {
+#oyhgyferkq .gt_super {
   font-size: 65%;
 }
 
-#yopgqecbfy .gt_footnote_marks {
+#oyhgyferkq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yopgqecbfy .gt_asterisk {
+#oyhgyferkq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yopgqecbfy .gt_indent_1 {
+#oyhgyferkq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yopgqecbfy .gt_indent_2 {
+#oyhgyferkq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yopgqecbfy .gt_indent_3 {
+#oyhgyferkq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yopgqecbfy .gt_indent_4 {
+#oyhgyferkq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yopgqecbfy .gt_indent_5 {
+#oyhgyferkq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yopgqecbfy .katex-display {
+#oyhgyferkq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yopgqecbfy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#oyhgyferkq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -852,39 +890,39 @@ div.csl-indent {
 </figure>
 </div>
 </div>
-<p>从原始数据计算和整理森林图所需的数据比较繁琐，以下方法可以计算每个亚组的样本数、事件数、HR值、标准误、置信区间上限/下限以及P值，“HR (95% CI)”需要拼接一下。在本例中，经过整理用于绘制森林图的数据格式如<a href="#tbl-森林图数据" class="quarto-xref">表&nbsp;<span>2.2</span></a>所示。</p>
+<p>从原始数据计算和整理森林图所需的数据比较繁琐，以下方法可以计算每个亚组的样本数、事件数、HR值、标准误、置信区间上限/下限以及P值，“HR (95% CI)”需要拼接一下。在本例中，经过整理用于绘制森林图的数据格式如<a href="#tbl-森林图数据" class="quarto-xref">Table&nbsp;<span>2.2</span></a>所示。</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">count</span>(trt_group, event) <span class="co">#计算样本数和事件数</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(\(x) <span class="fu">coxph</span>(<span class="fu">Surv</span>(month, event) <span class="sc">~</span> trt_group, <span class="at">data =</span> x))() <span class="sc">|&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(<span class="at">exponentiate =</span> <span class="cn">TRUE</span>, <span class="at">conf.int =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(estimate, std.error, conf.low, conf.high, p.value) <span class="co">#计算HR值、标准误、置信区间上限/下限以及P值</span></span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(estimate, std.error, conf.low, conf.high, p.value) <span class="co">#计算HR值、标准误、置信区间上限/下限以及P值</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-森林图数据" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-森林图数据-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;2.2: 经过整理的完整森林图数据*
+Table&nbsp;2.2: 经过整理的完整森林图数据*
 </figcaption>
 <div aria-describedby="tbl-森林图数据-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="bfmnwykegy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bfmnwykegy table {
+<div id="ggheeyefjq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ggheeyefjq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bfmnwykegy thead, #bfmnwykegy tbody, #bfmnwykegy tfoot, #bfmnwykegy tr, #bfmnwykegy td, #bfmnwykegy th {
+#ggheeyefjq thead, #ggheeyefjq tbody, #ggheeyefjq tfoot, #ggheeyefjq tr, #ggheeyefjq td, #ggheeyefjq th {
   border-style: none;
 }
 
-#bfmnwykegy p {
+#ggheeyefjq p {
   margin: 0;
   padding: 0;
 }
 
-#bfmnwykegy .gt_table {
+#ggheeyefjq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -910,12 +948,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_caption {
+#ggheeyefjq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bfmnwykegy .gt_title {
+#ggheeyefjq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -927,7 +965,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#bfmnwykegy .gt_subtitle {
+#ggheeyefjq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -939,7 +977,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#bfmnwykegy .gt_heading {
+#ggheeyefjq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -951,13 +989,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_bottom_border {
+#ggheeyefjq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_col_headings {
+#ggheeyefjq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -972,7 +1010,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_col_heading {
+#ggheeyefjq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -992,7 +1030,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#bfmnwykegy .gt_column_spanner_outer {
+#ggheeyefjq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1004,15 +1042,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#bfmnwykegy .gt_column_spanner_outer:first-child {
+#ggheeyefjq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bfmnwykegy .gt_column_spanner_outer:last-child {
+#ggheeyefjq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bfmnwykegy .gt_column_spanner {
+#ggheeyefjq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1024,11 +1062,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#bfmnwykegy .gt_spanner_row {
+#ggheeyefjq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bfmnwykegy .gt_group_heading {
+#ggheeyefjq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1054,7 +1092,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#bfmnwykegy .gt_empty_group_heading {
+#ggheeyefjq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1069,15 +1107,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#bfmnwykegy .gt_from_md > :first-child {
+#ggheeyefjq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bfmnwykegy .gt_from_md > :last-child {
+#ggheeyefjq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bfmnwykegy .gt_row {
+#ggheeyefjq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1096,7 +1134,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#bfmnwykegy .gt_stub {
+#ggheeyefjq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1109,7 +1147,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#bfmnwykegy .gt_stub_row_group {
+#ggheeyefjq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1123,15 +1161,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#bfmnwykegy .gt_row_group_first td {
+#ggheeyefjq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bfmnwykegy .gt_row_group_first th {
+#ggheeyefjq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bfmnwykegy .gt_summary_row {
+#ggheeyefjq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1141,16 +1179,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#bfmnwykegy .gt_first_summary_row {
+#ggheeyefjq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_first_summary_row.thick {
+#ggheeyefjq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bfmnwykegy .gt_last_summary_row {
+#ggheeyefjq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1160,7 +1198,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_grand_summary_row {
+#ggheeyefjq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1170,7 +1208,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#bfmnwykegy .gt_first_grand_summary_row {
+#ggheeyefjq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1180,7 +1218,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_last_grand_summary_row_top {
+#ggheeyefjq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1190,11 +1228,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_striped {
+#ggheeyefjq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bfmnwykegy .gt_table_body {
+#ggheeyefjq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1203,7 +1241,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_footnotes {
+#ggheeyefjq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1217,7 +1255,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_footnote {
+#ggheeyefjq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1226,7 +1264,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#bfmnwykegy .gt_sourcenotes {
+#ggheeyefjq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1240,7 +1278,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#bfmnwykegy .gt_sourcenote {
+#ggheeyefjq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1248,72 +1286,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#bfmnwykegy .gt_left {
+#ggheeyefjq .gt_left {
   text-align: left;
 }
 
-#bfmnwykegy .gt_center {
+#ggheeyefjq .gt_center {
   text-align: center;
 }
 
-#bfmnwykegy .gt_right {
+#ggheeyefjq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bfmnwykegy .gt_font_normal {
+#ggheeyefjq .gt_font_normal {
   font-weight: normal;
 }
 
-#bfmnwykegy .gt_font_bold {
+#ggheeyefjq .gt_font_bold {
   font-weight: bold;
 }
 
-#bfmnwykegy .gt_font_italic {
+#ggheeyefjq .gt_font_italic {
   font-style: italic;
 }
 
-#bfmnwykegy .gt_super {
+#ggheeyefjq .gt_super {
   font-size: 65%;
 }
 
-#bfmnwykegy .gt_footnote_marks {
+#ggheeyefjq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bfmnwykegy .gt_asterisk {
+#ggheeyefjq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bfmnwykegy .gt_indent_1 {
+#ggheeyefjq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bfmnwykegy .gt_indent_2 {
+#ggheeyefjq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bfmnwykegy .gt_indent_3 {
+#ggheeyefjq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bfmnwykegy .gt_indent_4 {
+#ggheeyefjq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bfmnwykegy .gt_indent_5 {
+#ggheeyefjq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bfmnwykegy .katex-display {
+#ggheeyefjq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bfmnwykegy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ggheeyefjq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1576,21 +1614,22 @@ div.csl-indent {
 <p><small>*在forestploter中，森林图的绘图区是通过一个用空格填充的空白列来实现的。本例中的空白列”CI”位于HR (95% CI)前，未展示在以上表中。</small></p>
 <p>正式绘图前，我们需要先定义一个主题。在这一主题中设定了置信区间的形状和颜色、参考线的颜色和底纹的颜色等。</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tm <span class="ot">&lt;-</span> <span class="fu">forest_theme</span>(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">base_size =</span> <span class="dv">8</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci_pch =</span> <span class="dv">16</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci_col =</span> <span class="st">"black"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci_Theight =</span> <span class="fl">0.2</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">refline_gp =</span> grid<span class="sc">::</span><span class="fu">gpar</span>(<span class="at">col =</span> <span class="st">"red"</span>),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">core =</span> <span class="fu">list</span>(</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fg_params =</span> <span class="fu">list</span>(<span class="at">fontsize =</span> <span class="dv">8</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">x =</span> <span class="fl">0.5</span>),</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg_params =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"#eff3f2"</span>, <span class="st">"white"</span>), <span class="at">length.out =</span> <span class="fu">nrow</span>(forest_data)))</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">colhead =</span> <span class="fu">list</span>(</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">fg_params =</span> <span class="fu">list</span>(<span class="at">fontface =</span> <span class="st">"plain"</span>, <span class="at">fontsize =</span> <span class="dv">8</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">x =</span> <span class="fl">0.5</span>),</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg_params =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="st">"white"</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>font_size <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tm <span class="ot">&lt;-</span> <span class="fu">forest_theme</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">base_size =</span> font_size,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci_pch =</span> <span class="dv">16</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci_col =</span> <span class="st">"black"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci_Theight =</span> <span class="fl">0.2</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">refline_gp =</span> grid<span class="sc">::</span><span class="fu">gpar</span>(<span class="at">col =</span> <span class="st">"red"</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">core =</span> <span class="fu">list</span>(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fg_params =</span> <span class="fu">list</span>(<span class="at">fontsize =</span> font_size, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">x =</span> <span class="fl">0.5</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg_params =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"#eff3f2"</span>, <span class="st">"white"</span>), <span class="at">length.out =</span> <span class="fu">nrow</span>(forest_data)))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">colhead =</span> <span class="fu">list</span>(</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">fg_params =</span> <span class="fu">list</span>(<span class="at">fontface =</span> <span class="st">"plain"</span>, <span class="at">fontsize =</span> font_size, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">x =</span> <span class="fl">0.5</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg_params =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="st">"white"</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>接下来就可以正式绘图啦！</p>
 <div class="cell" data-layout-align="center">
@@ -1618,19 +1657,19 @@ div.csl-indent {
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">arrow_lab =</span> <span class="fu">c</span>(<span class="st">"Treatment better"</span>, <span class="st">"Placebo better"</span>),</span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Subgroup Analysis"</span>,</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">theme =</span> tm</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>在以上代码的基础上，我们还可以使用insert_text(), add_text()和edit_plot()等函数进行了细节调整，例如通过insert_text(text = “Subgroup”, part = “header”, row = 1, col = 1)可以在表头部分的第一行、第一列插入文字”subgroup”。由于篇幅所限就不在这里展示了</p>
-<p>最终生成的森林图如<a href="#fig-森林图" class="quarto-xref">图&nbsp;<span>2.1</span></a>所示。</p>
+<p>在以上代码的基础上，我们还可以使用insert_text(), add_text()和edit_plot()等函数进行了细节调整，例如通过insert_text(text = “Subgroup”, part = “header”, row = 1, col = 1)可以在表头部分的第一行、第一列插入文字”subgroup”。由于篇幅所限就不在这里展示了。</p>
+<p>最终生成的森林图如<a href="#fig-森林图" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>所示。</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-森林图" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-森林图-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="2-森林图_files/figure-html/fig-森林图-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+<img src="02森林图_files/figure-html/fig-森林图-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-森林图-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-图&nbsp;2.1: 用forestploter绘制的森林图
+Figure&nbsp;2.1: 用forestploter绘制的森林图
 </figcaption>
 </figure>
 </div>
@@ -1647,33 +1686,33 @@ div.csl-indent {
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(term <span class="sc">==</span> <span class="fu">str_c</span>(<span class="st">"trt_group:"</span>, vars[i]))</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  inter_p <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(inter_p, inter_pi)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-交互作用" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-交互作用-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;2.3: 亚组交互作用
+Table&nbsp;2.3: 亚组交互作用
 </figcaption>
 <div aria-describedby="tbl-交互作用-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="kzonahnfie" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kzonahnfie table {
+<div id="hgjavjmmhh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hgjavjmmhh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#kzonahnfie thead, #kzonahnfie tbody, #kzonahnfie tfoot, #kzonahnfie tr, #kzonahnfie td, #kzonahnfie th {
+#hgjavjmmhh thead, #hgjavjmmhh tbody, #hgjavjmmhh tfoot, #hgjavjmmhh tr, #hgjavjmmhh td, #hgjavjmmhh th {
   border-style: none;
 }
 
-#kzonahnfie p {
+#hgjavjmmhh p {
   margin: 0;
   padding: 0;
 }
 
-#kzonahnfie .gt_table {
+#hgjavjmmhh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1699,12 +1738,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_caption {
+#hgjavjmmhh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kzonahnfie .gt_title {
+#hgjavjmmhh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1716,7 +1755,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#kzonahnfie .gt_subtitle {
+#hgjavjmmhh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1728,7 +1767,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#kzonahnfie .gt_heading {
+#hgjavjmmhh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1740,13 +1779,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_bottom_border {
+#hgjavjmmhh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_col_headings {
+#hgjavjmmhh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1761,7 +1800,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_col_heading {
+#hgjavjmmhh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1781,7 +1820,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#kzonahnfie .gt_column_spanner_outer {
+#hgjavjmmhh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1793,15 +1832,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#kzonahnfie .gt_column_spanner_outer:first-child {
+#hgjavjmmhh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kzonahnfie .gt_column_spanner_outer:last-child {
+#hgjavjmmhh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kzonahnfie .gt_column_spanner {
+#hgjavjmmhh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1813,11 +1852,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#kzonahnfie .gt_spanner_row {
+#hgjavjmmhh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#kzonahnfie .gt_group_heading {
+#hgjavjmmhh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1843,7 +1882,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#kzonahnfie .gt_empty_group_heading {
+#hgjavjmmhh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1858,15 +1897,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#kzonahnfie .gt_from_md > :first-child {
+#hgjavjmmhh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kzonahnfie .gt_from_md > :last-child {
+#hgjavjmmhh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kzonahnfie .gt_row {
+#hgjavjmmhh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1885,7 +1924,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#kzonahnfie .gt_stub {
+#hgjavjmmhh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1898,7 +1937,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#kzonahnfie .gt_stub_row_group {
+#hgjavjmmhh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1912,15 +1951,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#kzonahnfie .gt_row_group_first td {
+#hgjavjmmhh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kzonahnfie .gt_row_group_first th {
+#hgjavjmmhh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#kzonahnfie .gt_summary_row {
+#hgjavjmmhh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1930,16 +1969,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#kzonahnfie .gt_first_summary_row {
+#hgjavjmmhh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_first_summary_row.thick {
+#hgjavjmmhh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kzonahnfie .gt_last_summary_row {
+#hgjavjmmhh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1949,7 +1988,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_grand_summary_row {
+#hgjavjmmhh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1959,7 +1998,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#kzonahnfie .gt_first_grand_summary_row {
+#hgjavjmmhh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1969,7 +2008,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_last_grand_summary_row_top {
+#hgjavjmmhh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1979,11 +2018,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_striped {
+#hgjavjmmhh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kzonahnfie .gt_table_body {
+#hgjavjmmhh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1992,7 +2031,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_footnotes {
+#hgjavjmmhh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2006,7 +2045,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_footnote {
+#hgjavjmmhh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2015,7 +2054,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#kzonahnfie .gt_sourcenotes {
+#hgjavjmmhh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2029,7 +2068,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#kzonahnfie .gt_sourcenote {
+#hgjavjmmhh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2037,72 +2076,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#kzonahnfie .gt_left {
+#hgjavjmmhh .gt_left {
   text-align: left;
 }
 
-#kzonahnfie .gt_center {
+#hgjavjmmhh .gt_center {
   text-align: center;
 }
 
-#kzonahnfie .gt_right {
+#hgjavjmmhh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kzonahnfie .gt_font_normal {
+#hgjavjmmhh .gt_font_normal {
   font-weight: normal;
 }
 
-#kzonahnfie .gt_font_bold {
+#hgjavjmmhh .gt_font_bold {
   font-weight: bold;
 }
 
-#kzonahnfie .gt_font_italic {
+#hgjavjmmhh .gt_font_italic {
   font-style: italic;
 }
 
-#kzonahnfie .gt_super {
+#hgjavjmmhh .gt_super {
   font-size: 65%;
 }
 
-#kzonahnfie .gt_footnote_marks {
+#hgjavjmmhh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#kzonahnfie .gt_asterisk {
+#hgjavjmmhh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kzonahnfie .gt_indent_1 {
+#hgjavjmmhh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kzonahnfie .gt_indent_2 {
+#hgjavjmmhh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kzonahnfie .gt_indent_3 {
+#hgjavjmmhh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kzonahnfie .gt_indent_4 {
+#hgjavjmmhh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kzonahnfie .gt_indent_5 {
+#hgjavjmmhh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#kzonahnfie .katex-display {
+#hgjavjmmhh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#kzonahnfie div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hgjavjmmhh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2168,18 +2207,21 @@ div.csl-indent {
 </figure>
 </div>
 </div>
-<p><a href="#tbl-交互作用" class="quarto-xref">表&nbsp;<span>2.3</span></a>分别列出了6个变量亚组间的交互作用P值。可以看到P值均大于0.05，说明治疗效应在各个亚组之间是一致的。</p>
+<p><a href="#tbl-交互作用" class="quarto-xref">Table&nbsp;<span>2.3</span></a>分别列出了6个变量亚组间的交互作用P值。可以看到P值均大于0.05，说明治疗效应在各个亚组之间是一致的。</p>
 
 
-<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">参考文献</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-NMPA_subgroup_analysis" class="csl-entry" role="listitem">
 <div class="csl-left-margin">1. </div><div class="csl-right-inline">国家药品监督管理局药品审评中心. <a href="https://www.cde.org.cn/zdyz/domesticinfopage?zdyzIdCODE=cec75e58ace47593dac6993bdff9a6be">药物临床试验亚组分析指导原则（试行）</a>. (2020).</div>
 </div>
 <div id="ref-ich_e9" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use. <em>Statistical Principles for Clinical Trials E9</em>. <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a> (1998年).</div>
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use. <em>Statistical Principles for Clinical Trials E9</em>. <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a> (1998).</div>
 </div>
 <div id="ref-ich_e9_r1" class="csl-entry" role="listitem">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use. <em>Estimands and Sensitivity Analysis in Clinical Trials E9 (R1)</em>. <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a> (2019年).</div>
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use. <em>Estimands and Sensitivity Analysis in Clinical Trials E9 (R1)</em>. <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a> (2019).</div>
 </div>
 </div>
 </section>
@@ -2210,12 +2252,12 @@ div.csl-indent {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "已复制");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "已复制");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -2587,13 +2629,13 @@ div.csl-indent {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./1-KM生存分析.html" class="pagination-link" aria-label="生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线">
+      <a href="./01生存分析.html" class="pagination-link" aria-label="生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03箱线图.html" class="pagination-link" aria-label="原来箱线图也可以很高级 | 带抖动散点的箱线图和配对箱线图">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">原来箱线图也可以很高级 | 带抖动散点的箱线图和配对箱线图</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
