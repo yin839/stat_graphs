@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; 生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线 – 临床研究统计图 | 从理解原理到优雅绘图</title>
+<title>1&nbsp; 生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线 – 临床研究常见统计图 - 从理解统计原理到优雅绘图</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -61,27 +61,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -91,7 +71,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./2-森林图.html" rel="next">
+<link href="./02森林图.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -102,7 +82,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7de7514555351e31c0506ecc2dab164e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-631496449bf32ff9b0bb69a6bfd9195d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -117,17 +97,17 @@ div.csl-indent {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "没有结果",
-    "search-matching-documents-text": "匹配的文档",
-    "search-copy-link-title": "复制搜索链接",
-    "search-hide-matches-text": "隐藏其它匹配结果",
-    "search-more-match-text": "更多匹配结果",
-    "search-more-matches-text": "更多匹配结果",
-    "search-clear-button-title": "清除",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "取消",
-    "search-submit-button-title": "提交",
-    "search-label": "搜索"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -170,13 +150,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1-KM生存分析.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="展开或折叠侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01生存分析.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="搜索" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -188,12 +168,12 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">临床研究统计图 | 从理解原理到优雅绘图</a> 
+      <a href="./">临床研究常见统计图 - 从理解统计原理到优雅绘图</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="搜索"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -206,20 +186,56 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./1-KM生存分析.html" class="sidebar-item-text sidebar-link active">
+  <a href="./01生存分析.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2-森林图.html" class="sidebar-item-text sidebar-link">
+  <a href="./02森林图.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./03箱线图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">原来箱线图也可以很高级 | 带抖动散点的箱线图和配对箱线图</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04泳道图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">泳道图：让每位患者的治疗轨迹“被看见”</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05冲积图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">冲积图：一张图看懂研究对象在多个分类维度间的分组变迁</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06Table-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">出版级Table 1一键生成 | 可导出word直接投稿</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07AE汇总表.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">告别耗时费力 | 快速生成符合规范的不良事件汇总表</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08金字塔图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">金字塔图：让不良事件组间对比一目了然！</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09累积发生率图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">竞争事件当作删失处理？你可能一直在高估结局事件的发生率</span></span></a>
   </div>
 </li>
     </ul>
@@ -229,7 +245,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">目录</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#生存曲线中的核心概念" id="toc-生存曲线中的核心概念" class="nav-link active" data-scroll-target="#生存曲线中的核心概念"><span class="header-section-number">1.1</span> 生存曲线中的核心概念</a></li>
@@ -260,6 +276,7 @@ window.Quarto = {
 </header>
 
 
+<p><br></p>
 <p>Kaplan-Meier（KM）生存曲线是临床研究中使用率最高的统计图表之一，但很多小伙伴在绘图时，总会遇到各种棘手的问题：</p>
 <ul>
 <li><p>传统软件生成的图精细度有限，往往难以满足期刊的要求；</p></li>
@@ -300,34 +317,34 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggsurvfit)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>本例用到的模拟数据df如<a href="#tbl-survival-data" class="quarto-xref">表&nbsp;<span>1.1</span></a>所示，包括709名患者的随访时间（month）、是否发生结局事件（event）和分组（group），绘制生存曲线将用到以上3个变量。数据中还包括了sex, age_group, race等变量，在以后的cox回归分析中可以作为协变量纳入模型。</p>
+<p>本例用到的模拟数据df如<a href="#tbl-survival-data" class="quarto-xref">Table&nbsp;<span>1.1</span></a>所示，包括709名患者的随访时间（month）、是否发生结局事件（event）和分组（group），绘制生存曲线将用到以上3个变量。数据中还包括了sex, age_group, race等变量，在以后的cox回归分析中可以作为协变量纳入模型。</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-survival-data" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-survival-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-表&nbsp;1.1: 生存曲线数据（前10行）
+Table&nbsp;1.1: 生存曲线数据（前10行）
 </figcaption>
 <div aria-describedby="tbl-survival-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="wridgzxjwv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wridgzxjwv table {
+<div id="rmhdaoigbo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rmhdaoigbo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wridgzxjwv thead, #wridgzxjwv tbody, #wridgzxjwv tfoot, #wridgzxjwv tr, #wridgzxjwv td, #wridgzxjwv th {
+#rmhdaoigbo thead, #rmhdaoigbo tbody, #rmhdaoigbo tfoot, #rmhdaoigbo tr, #rmhdaoigbo td, #rmhdaoigbo th {
   border-style: none;
 }
 
-#wridgzxjwv p {
+#rmhdaoigbo p {
   margin: 0;
   padding: 0;
 }
 
-#wridgzxjwv .gt_table {
+#rmhdaoigbo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -353,12 +370,12 @@ window.Quarto = {
   border-left-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_caption {
+#rmhdaoigbo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wridgzxjwv .gt_title {
+#rmhdaoigbo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -370,7 +387,7 @@ window.Quarto = {
   border-bottom-width: 0;
 }
 
-#wridgzxjwv .gt_subtitle {
+#rmhdaoigbo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -382,7 +399,7 @@ window.Quarto = {
   border-top-width: 0;
 }
 
-#wridgzxjwv .gt_heading {
+#rmhdaoigbo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -394,13 +411,13 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_bottom_border {
+#rmhdaoigbo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_col_headings {
+#rmhdaoigbo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -415,7 +432,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_col_heading {
+#rmhdaoigbo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -435,7 +452,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#wridgzxjwv .gt_column_spanner_outer {
+#rmhdaoigbo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -447,15 +464,15 @@ window.Quarto = {
   padding-right: 4px;
 }
 
-#wridgzxjwv .gt_column_spanner_outer:first-child {
+#rmhdaoigbo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wridgzxjwv .gt_column_spanner_outer:last-child {
+#rmhdaoigbo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wridgzxjwv .gt_column_spanner {
+#rmhdaoigbo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -467,11 +484,11 @@ window.Quarto = {
   width: 100%;
 }
 
-#wridgzxjwv .gt_spanner_row {
+#rmhdaoigbo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wridgzxjwv .gt_group_heading {
+#rmhdaoigbo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -497,7 +514,7 @@ window.Quarto = {
   text-align: left;
 }
 
-#wridgzxjwv .gt_empty_group_heading {
+#rmhdaoigbo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -512,15 +529,15 @@ window.Quarto = {
   vertical-align: middle;
 }
 
-#wridgzxjwv .gt_from_md > :first-child {
+#rmhdaoigbo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wridgzxjwv .gt_from_md > :last-child {
+#rmhdaoigbo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wridgzxjwv .gt_row {
+#rmhdaoigbo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -539,7 +556,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#wridgzxjwv .gt_stub {
+#rmhdaoigbo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -552,7 +569,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#wridgzxjwv .gt_stub_row_group {
+#rmhdaoigbo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -566,15 +583,15 @@ window.Quarto = {
   vertical-align: top;
 }
 
-#wridgzxjwv .gt_row_group_first td {
+#rmhdaoigbo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wridgzxjwv .gt_row_group_first th {
+#rmhdaoigbo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wridgzxjwv .gt_summary_row {
+#rmhdaoigbo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -584,16 +601,16 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#wridgzxjwv .gt_first_summary_row {
+#rmhdaoigbo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_first_summary_row.thick {
+#rmhdaoigbo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wridgzxjwv .gt_last_summary_row {
+#rmhdaoigbo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -603,7 +620,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_grand_summary_row {
+#rmhdaoigbo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -613,7 +630,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#wridgzxjwv .gt_first_grand_summary_row {
+#rmhdaoigbo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -623,7 +640,7 @@ window.Quarto = {
   border-top-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_last_grand_summary_row_top {
+#rmhdaoigbo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -633,11 +650,11 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_striped {
+#rmhdaoigbo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wridgzxjwv .gt_table_body {
+#rmhdaoigbo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -646,7 +663,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_footnotes {
+#rmhdaoigbo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -660,7 +677,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_footnote {
+#rmhdaoigbo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -669,7 +686,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#wridgzxjwv .gt_sourcenotes {
+#rmhdaoigbo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -683,7 +700,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#wridgzxjwv .gt_sourcenote {
+#rmhdaoigbo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -691,72 +708,72 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#wridgzxjwv .gt_left {
+#rmhdaoigbo .gt_left {
   text-align: left;
 }
 
-#wridgzxjwv .gt_center {
+#rmhdaoigbo .gt_center {
   text-align: center;
 }
 
-#wridgzxjwv .gt_right {
+#rmhdaoigbo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wridgzxjwv .gt_font_normal {
+#rmhdaoigbo .gt_font_normal {
   font-weight: normal;
 }
 
-#wridgzxjwv .gt_font_bold {
+#rmhdaoigbo .gt_font_bold {
   font-weight: bold;
 }
 
-#wridgzxjwv .gt_font_italic {
+#rmhdaoigbo .gt_font_italic {
   font-style: italic;
 }
 
-#wridgzxjwv .gt_super {
+#rmhdaoigbo .gt_super {
   font-size: 65%;
 }
 
-#wridgzxjwv .gt_footnote_marks {
+#rmhdaoigbo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wridgzxjwv .gt_asterisk {
+#rmhdaoigbo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wridgzxjwv .gt_indent_1 {
+#rmhdaoigbo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wridgzxjwv .gt_indent_2 {
+#rmhdaoigbo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wridgzxjwv .gt_indent_3 {
+#rmhdaoigbo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wridgzxjwv .gt_indent_4 {
+#rmhdaoigbo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wridgzxjwv .gt_indent_5 {
+#rmhdaoigbo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wridgzxjwv .katex-display {
+#rmhdaoigbo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wridgzxjwv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rmhdaoigbo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -768,7 +785,6 @@ window.Quarto = {
 <th id="group" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">group</th>
 <th id="month" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">month</th>
 <th id="event" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">event</th>
-<th id="status" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">status</th>
 <th id="sex" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">sex</th>
 <th id="age_group" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">age_group</th>
 <th id="race" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">race</th>
@@ -781,10 +797,9 @@ window.Quarto = {
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="new_id">A000</td>
-<td class="gt_row gt_left" headers="group">Treatment_A</td>
+<td class="gt_row gt_left" headers="group">Treatment</td>
 <td class="gt_row gt_right" headers="month">1.76</td>
 <td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="status">Event</td>
 <td class="gt_row gt_left" headers="sex">Male</td>
 <td class="gt_row gt_left" headers="age_group">≥65-year</td>
 <td class="gt_row gt_left" headers="race">White</td>
@@ -795,10 +810,9 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="new_id">A001</td>
-<td class="gt_row gt_left" headers="group">Treatment_A</td>
+<td class="gt_row gt_left" headers="group">Treatment</td>
 <td class="gt_row gt_right" headers="month">2.09</td>
 <td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="status">Event</td>
 <td class="gt_row gt_left" headers="sex">Female</td>
 <td class="gt_row gt_left" headers="age_group">≥65-year</td>
 <td class="gt_row gt_left" headers="race">White</td>
@@ -809,10 +823,9 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="new_id">A002</td>
-<td class="gt_row gt_left" headers="group">Treatment_A</td>
+<td class="gt_row gt_left" headers="group">Treatment</td>
 <td class="gt_row gt_right" headers="month">0.57</td>
 <td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="status">Event</td>
 <td class="gt_row gt_left" headers="sex">Male</td>
 <td class="gt_row gt_left" headers="age_group">≥65-year</td>
 <td class="gt_row gt_left" headers="race">White</td>
@@ -823,10 +836,9 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="new_id">A003</td>
-<td class="gt_row gt_left" headers="group">Treatment_A</td>
+<td class="gt_row gt_left" headers="group">Treatment</td>
 <td class="gt_row gt_right" headers="month">0.14</td>
 <td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="status">Event</td>
 <td class="gt_row gt_left" headers="sex">Male</td>
 <td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
 <td class="gt_row gt_left" headers="race">White</td>
@@ -837,10 +849,9 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="new_id">A004</td>
-<td class="gt_row gt_left" headers="group">Treatment_A</td>
+<td class="gt_row gt_left" headers="group">Treatment</td>
 <td class="gt_row gt_right" headers="month">0.62</td>
 <td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="status">Event</td>
 <td class="gt_row gt_left" headers="sex">Male</td>
 <td class="gt_row gt_left" headers="age_group">≥65-year</td>
 <td class="gt_row gt_left" headers="race">White</td>
@@ -851,10 +862,9 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="new_id">A005</td>
-<td class="gt_row gt_left" headers="group">Treatment_A</td>
+<td class="gt_row gt_left" headers="group">Treatment</td>
 <td class="gt_row gt_right" headers="month">0.33</td>
 <td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="status">Event</td>
 <td class="gt_row gt_left" headers="sex">Male</td>
 <td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
 <td class="gt_row gt_left" headers="race">White</td>
@@ -865,10 +875,9 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="new_id">A006</td>
-<td class="gt_row gt_left" headers="group">Treatment_A</td>
+<td class="gt_row gt_left" headers="group">Treatment</td>
 <td class="gt_row gt_right" headers="month">2.18</td>
 <td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="status">Event</td>
 <td class="gt_row gt_left" headers="sex">Female</td>
 <td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
 <td class="gt_row gt_left" headers="race">White</td>
@@ -879,10 +888,9 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="new_id">A007</td>
-<td class="gt_row gt_left" headers="group">Treatment_A</td>
+<td class="gt_row gt_left" headers="group">Treatment</td>
 <td class="gt_row gt_right" headers="month">2.04</td>
 <td class="gt_row gt_right" headers="event">0</td>
-<td class="gt_row gt_left" headers="status">Censored</td>
 <td class="gt_row gt_left" headers="sex">Male</td>
 <td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
 <td class="gt_row gt_left" headers="race">White</td>
@@ -893,10 +901,9 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="new_id">A008</td>
-<td class="gt_row gt_left" headers="group">Treatment_A</td>
+<td class="gt_row gt_left" headers="group">Treatment</td>
 <td class="gt_row gt_right" headers="month">1.43</td>
 <td class="gt_row gt_right" headers="event">0</td>
-<td class="gt_row gt_left" headers="status">Censored</td>
 <td class="gt_row gt_left" headers="sex">Female</td>
 <td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
 <td class="gt_row gt_left" headers="race">White</td>
@@ -907,10 +914,9 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="new_id">A009</td>
-<td class="gt_row gt_left" headers="group">Treatment_A</td>
+<td class="gt_row gt_left" headers="group">Treatment</td>
 <td class="gt_row gt_right" headers="month">1.35</td>
 <td class="gt_row gt_right" headers="event">0</td>
-<td class="gt_row gt_left" headers="status">Censored</td>
 <td class="gt_row gt_left" headers="sex">Female</td>
 <td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
 <td class="gt_row gt_left" headers="race">White</td>
@@ -932,16 +938,16 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">survfit2</span>(<span class="fu">Surv</span>(month, event) <span class="sc">~</span> group, <span class="at">data =</span> df)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>hr <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">relevel</span>(<span class="fu">factor</span>(group), <span class="at">ref =</span> <span class="st">"Treatment_B"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">relevel</span>(<span class="fu">factor</span>(group), <span class="at">ref =</span> <span class="st">"Placebo"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  (\(x) <span class="fu">coxph</span>(<span class="fu">Surv</span>(month, event) <span class="sc">~</span> group, <span class="at">data =</span> x))() <span class="sc">|&gt;</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>hr<span class="sc">$</span>conf.int</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>hr<span class="sc">$</span>conf.int</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                 exp(coef) exp(-coef) lower .95 upper .95
-groupTreatment_A 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
+<pre><code>               exp(coef) exp(-coef) lower .95 upper .95
+groupTreatment 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
 </div>
 </div>
-<p>用ggsurvfit函数绘制KM生存曲线，如<a href="#fig-生存曲线" class="quarto-xref">图&nbsp;<span>1.1</span></a>所示。</p>
+<p>用ggsurvfit函数绘制KM生存曲线，如<a href="#fig-生存曲线" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>所示。</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> fit <span class="sc">|&gt;</span> <span class="fu">ggsurvfit</span>() <span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_confidence_interval</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
@@ -986,15 +992,15 @@ groupTreatment_A 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
 <span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
 <span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">11</span> <span class="sc">*</span> <span class="fl">0.35</span></span>
 <span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="复制到剪贴板" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-生存曲线" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-生存曲线-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="1-KM生存分析_files/figure-html/fig-生存曲线-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+<img src="01生存分析_files/figure-html/fig-生存曲线-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-生存曲线-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-图&nbsp;1.1: ggsurvfit包绘制的KM生存曲线
+Figure&nbsp;1.1: ggsurvfit包绘制的KM生存曲线
 </figcaption>
 </figure>
 </div>
@@ -1003,14 +1009,6 @@ groupTreatment_A 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
 <p>add_*()是发挥核心功能的函数，同时我们进行了大量的个体化调整，包括字体、字号、图例位置、坐标轴范围、风险表的统计指标等，最终生成了美观的高质量KM生存曲线。前文中计算得出的HR值及置信区间也已经在图中标注出来了。</p>
 
 
-<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
-<div id="ref-ich_e9" class="csl-entry" role="listitem">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use. <em>Statistical Principles for Clinical Trials E9</em>. <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a> (1998年).</div>
-</div>
-<div id="ref-ich_e9_r1" class="csl-entry" role="listitem">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use. <em>Estimands and Sensitivity Analysis in Clinical Trials E9 (R1)</em>. <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a> (2019年).</div>
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -1039,12 +1037,12 @@ groupTreatment_A 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "已复制");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "已复制");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -1421,7 +1419,7 @@ groupTreatment_A 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./2-森林图.html" class="pagination-link" aria-label="森林图只会看不会画？从统计概念到R代码一次讲清楚">
+      <a href="./02森林图.html" class="pagination-link" aria-label="森林图只会看不会画？从统计概念到R代码一次讲清楚">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
