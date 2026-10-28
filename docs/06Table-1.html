@@ -176,7 +176,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">前言</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -233,6 +233,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">竞争事件当作删失处理？你可能一直在高估结局事件的发生率</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10流程图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">患者流程图不必再手动画 | 有更优雅的方式</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -243,7 +249,9 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bibliography" id="toc-bibliography" class="nav-link active" data-scroll-target="#bibliography">参考文献</a></li>
+  <li><a href="#table-1需要报告p值吗" id="toc-table-1需要报告p值吗" class="nav-link active" data-scroll-target="#table-1需要报告p值吗"><span class="header-section-number">6.1</span> Table 1需要报告P值吗？</a></li>
+  <li><a href="#实例" id="toc-实例" class="nav-link" data-scroll-target="#实例"><span class="header-section-number">6.2</span> 实例</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">参考文献</a></li>
   </ul>
 </nav>
     </div>
@@ -277,10 +285,14 @@ div.csl-indent {
 <li>好不容易算完，转到Word一粘贴，格式全乱。</li>
 </ul>
 <p>可能也试过R的tableone包，确实也很方便，但输出像 “毛坯房”，不够美观，自定义统计量和P值计算方法都受限制。今天跟大家分享一套组合拳：gtsummary + flextable。gtsummary负责统计，flextable负责美化，一步到位，直接生成出版级Table 1。</p>
+<section id="table-1需要报告p值吗" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="table-1需要报告p值吗"><span class="header-section-number">6.1</span> Table 1需要报告P值吗？</h2>
 <p>尽管从技术上讲，只需要在gtsummary中增加一行add_P()就可以输出P值，但在此之前，我们需要回答一个问题：Table 1到底是否需要放P值？</p>
 <p>CONSORT声明指出：“不建议对基线差异进行显著性检验，也不应报告此类结果。这类显著性检验用于评估观察到的基线差异是否可能由偶然因素引起；然而，只要随机分组未被破坏或干扰，任何差异都可能是偶然造成的。”<span class="citation" data-cites="hopewell_consort_2025"><sup><a href="#ref-hopewell_consort_2025" role="doc-biblioref">1</a></sup></span>由此可见，RCT的Table 1是不需要报告P值的。</p>
 <p>在观察性研究中，组间基线特征往往存在不平衡，可能引入混杂偏倚，影响研究结果的可靠性。但STROBE声明指出：“标准误和置信区间等推断性指标不应用于描述特征的变异程度，描述性表格中应避免使用显著性检验。此外，P值也不是筛选分析中需要调整的混杂因素的恰当标准；即使某混杂因素组间差异很小，只要它对结局有较强的影响，也可能具有重要意义。”<span class="citation" data-cites="vandenbroucke_strengthening_2007"><sup><a href="#ref-vandenbroucke_strengthening_2007" role="doc-biblioref">2</a></sup></span>可见在观察性研究中，一般情况下Table 1也不需要报告P值，除非期刊有明确的要求。</p>
-<p>接下来我们就通过一个实例来看一下如何实现。</p>
+</section>
+<section id="实例" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="实例"><span class="header-section-number">6.2</span> 实例</h2>
 <p>加载必要的包：</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -301,23 +313,23 @@ Table&nbsp;6.1: 模拟数据
 </figcaption>
 <div aria-describedby="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="ylhxecekdg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ylhxecekdg table {
+<div id="rmreioexwp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rmreioexwp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ylhxecekdg thead, #ylhxecekdg tbody, #ylhxecekdg tfoot, #ylhxecekdg tr, #ylhxecekdg td, #ylhxecekdg th {
+#rmreioexwp thead, #rmreioexwp tbody, #rmreioexwp tfoot, #rmreioexwp tr, #rmreioexwp td, #rmreioexwp th {
   border-style: none;
 }
 
-#ylhxecekdg p {
+#rmreioexwp p {
   margin: 0;
   padding: 0;
 }
 
-#ylhxecekdg .gt_table {
+#rmreioexwp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -343,12 +355,12 @@ Table&nbsp;6.1: 模拟数据
   border-left-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_caption {
+#rmreioexwp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ylhxecekdg .gt_title {
+#rmreioexwp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -360,7 +372,7 @@ Table&nbsp;6.1: 模拟数据
   border-bottom-width: 0;
 }
 
-#ylhxecekdg .gt_subtitle {
+#rmreioexwp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -372,7 +384,7 @@ Table&nbsp;6.1: 模拟数据
   border-top-width: 0;
 }
 
-#ylhxecekdg .gt_heading {
+#rmreioexwp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -384,13 +396,13 @@ Table&nbsp;6.1: 模拟数据
   border-right-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_bottom_border {
+#rmreioexwp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_col_headings {
+#rmreioexwp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -405,7 +417,7 @@ Table&nbsp;6.1: 模拟数据
   border-right-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_col_heading {
+#rmreioexwp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -425,7 +437,7 @@ Table&nbsp;6.1: 模拟数据
   overflow-x: hidden;
 }
 
-#ylhxecekdg .gt_column_spanner_outer {
+#rmreioexwp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -437,15 +449,15 @@ Table&nbsp;6.1: 模拟数据
   padding-right: 4px;
 }
 
-#ylhxecekdg .gt_column_spanner_outer:first-child {
+#rmreioexwp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ylhxecekdg .gt_column_spanner_outer:last-child {
+#rmreioexwp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ylhxecekdg .gt_column_spanner {
+#rmreioexwp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -457,11 +469,11 @@ Table&nbsp;6.1: 模拟数据
   width: 100%;
 }
 
-#ylhxecekdg .gt_spanner_row {
+#rmreioexwp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ylhxecekdg .gt_group_heading {
+#rmreioexwp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -487,7 +499,7 @@ Table&nbsp;6.1: 模拟数据
   text-align: left;
 }
 
-#ylhxecekdg .gt_empty_group_heading {
+#rmreioexwp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -502,15 +514,15 @@ Table&nbsp;6.1: 模拟数据
   vertical-align: middle;
 }
 
-#ylhxecekdg .gt_from_md > :first-child {
+#rmreioexwp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ylhxecekdg .gt_from_md > :last-child {
+#rmreioexwp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ylhxecekdg .gt_row {
+#rmreioexwp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -529,7 +541,7 @@ Table&nbsp;6.1: 模拟数据
   overflow-x: hidden;
 }
 
-#ylhxecekdg .gt_stub {
+#rmreioexwp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -542,7 +554,7 @@ Table&nbsp;6.1: 模拟数据
   padding-right: 5px;
 }
 
-#ylhxecekdg .gt_stub_row_group {
+#rmreioexwp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -556,15 +568,15 @@ Table&nbsp;6.1: 模拟数据
   vertical-align: top;
 }
 
-#ylhxecekdg .gt_row_group_first td {
+#rmreioexwp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ylhxecekdg .gt_row_group_first th {
+#rmreioexwp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ylhxecekdg .gt_summary_row {
+#rmreioexwp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -574,16 +586,16 @@ Table&nbsp;6.1: 模拟数据
   padding-right: 5px;
 }
 
-#ylhxecekdg .gt_first_summary_row {
+#rmreioexwp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_first_summary_row.thick {
+#rmreioexwp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ylhxecekdg .gt_last_summary_row {
+#rmreioexwp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -593,7 +605,7 @@ Table&nbsp;6.1: 模拟数据
   border-bottom-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_grand_summary_row {
+#rmreioexwp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -603,7 +615,7 @@ Table&nbsp;6.1: 模拟数据
   padding-right: 5px;
 }
 
-#ylhxecekdg .gt_first_grand_summary_row {
+#rmreioexwp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -613,7 +625,7 @@ Table&nbsp;6.1: 模拟数据
   border-top-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_last_grand_summary_row_top {
+#rmreioexwp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -623,11 +635,11 @@ Table&nbsp;6.1: 模拟数据
   border-bottom-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_striped {
+#rmreioexwp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ylhxecekdg .gt_table_body {
+#rmreioexwp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -636,7 +648,7 @@ Table&nbsp;6.1: 模拟数据
   border-bottom-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_footnotes {
+#rmreioexwp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -650,7 +662,7 @@ Table&nbsp;6.1: 模拟数据
   border-right-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_footnote {
+#rmreioexwp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -659,7 +671,7 @@ Table&nbsp;6.1: 模拟数据
   padding-right: 5px;
 }
 
-#ylhxecekdg .gt_sourcenotes {
+#rmreioexwp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -673,7 +685,7 @@ Table&nbsp;6.1: 模拟数据
   border-right-color: #D3D3D3;
 }
 
-#ylhxecekdg .gt_sourcenote {
+#rmreioexwp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -681,72 +693,72 @@ Table&nbsp;6.1: 模拟数据
   padding-right: 5px;
 }
 
-#ylhxecekdg .gt_left {
+#rmreioexwp .gt_left {
   text-align: left;
 }
 
-#ylhxecekdg .gt_center {
+#rmreioexwp .gt_center {
   text-align: center;
 }
 
-#ylhxecekdg .gt_right {
+#rmreioexwp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ylhxecekdg .gt_font_normal {
+#rmreioexwp .gt_font_normal {
   font-weight: normal;
 }
 
-#ylhxecekdg .gt_font_bold {
+#rmreioexwp .gt_font_bold {
   font-weight: bold;
 }
 
-#ylhxecekdg .gt_font_italic {
+#rmreioexwp .gt_font_italic {
   font-style: italic;
 }
 
-#ylhxecekdg .gt_super {
+#rmreioexwp .gt_super {
   font-size: 65%;
 }
 
-#ylhxecekdg .gt_footnote_marks {
+#rmreioexwp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ylhxecekdg .gt_asterisk {
+#rmreioexwp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ylhxecekdg .gt_indent_1 {
+#rmreioexwp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ylhxecekdg .gt_indent_2 {
+#rmreioexwp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ylhxecekdg .gt_indent_3 {
+#rmreioexwp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ylhxecekdg .gt_indent_4 {
+#rmreioexwp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ylhxecekdg .gt_indent_5 {
+#rmreioexwp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ylhxecekdg .katex-display {
+#rmreioexwp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ylhxecekdg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rmreioexwp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1005,6 +1017,7 @@ Table&nbsp;6.3: flextable美化后的“Table 1. Characteristics of the Patients
 <p>只要我们提前设定好统计量和标签，调整好期刊要求的格式，就可以一键生成Table 1，直接用于投稿啦！</p>
 
 
+</section>
 <section id="bibliography" class="level1 unnumbered">
 <h1 class="unnumbered">参考文献</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">

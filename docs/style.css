@@ -3,6 +3,7 @@
 }
 body {
   font-family: "Arial", "Microsoft YaHei", sans-serif;
+  line-height: 1.8;
 }
 p {
   text-indent: 0em;
@@ -12,4 +13,7 @@ div[id^="fig-"] {
 }
 div[id^="tab-"] {
   text-align: center !important;
+}
+.references {
+  font-size: smaller;
 }

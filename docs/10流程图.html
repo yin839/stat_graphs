@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; 生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线 – 临床研究常见统计图 - 从理解统计原理到优雅绘图</title>
+<title>10&nbsp; 患者流程图不必再手动画 | 有更优雅的方式 – 临床研究常见统计图 - 从理解统计原理到优雅绘图</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -61,7 +61,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -71,8 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./02森林图.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./09累积发生率图.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -111,35 +130,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -153,7 +143,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01生存分析.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10流程图.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">患者流程图不必再手动画 | 有更优雅的方式</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -181,12 +171,12 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">前言</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01生存分析.html" class="sidebar-item-text sidebar-link active">
+  <a href="./01生存分析.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></span></a>
   </div>
 </li>
@@ -238,6 +228,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">竞争事件当作删失处理？你可能一直在高估结局事件的发生率</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10流程图.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">患者流程图不必再手动画 | 有更优雅的方式</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -248,9 +244,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#生存曲线中的核心概念" id="toc-生存曲线中的核心概念" class="nav-link active" data-scroll-target="#生存曲线中的核心概念"><span class="header-section-number">1.1</span> 生存曲线中的核心概念</a></li>
-  <li><a href="#为什么选择ggsurvfit包绘制km生存曲线" id="toc-为什么选择ggsurvfit包绘制km生存曲线" class="nav-link" data-scroll-target="#为什么选择ggsurvfit包绘制km生存曲线"><span class="header-section-number">1.2</span> 为什么选择ggsurvfit包绘制KM生存曲线？</a></li>
-  <li><a href="#生存曲线实例" id="toc-生存曲线实例" class="nav-link" data-scroll-target="#生存曲线实例"><span class="header-section-number">1.3</span> 生存曲线实例</a></li>
+  <li><a href="#如何高效地绘制流程图" id="toc-如何高效地绘制流程图" class="nav-link active" data-scroll-target="#如何高效地绘制流程图"><span class="header-section-number">10.1</span> 如何高效地绘制流程图？</a></li>
+  <li><a href="#实例" id="toc-实例" class="nav-link" data-scroll-target="#实例"><span class="header-section-number">10.2</span> 实例</a>
+  <ul class="collapse">
+  <li><a href="#使用consort绘图" id="toc-使用consort绘图" class="nav-link" data-scroll-target="#使用consort绘图"><span class="header-section-number">10.2.1</span> 使用consort绘图</a></li>
+  <li><a href="#使用selecta包绘图" id="toc-使用selecta包绘图" class="nav-link" data-scroll-target="#使用selecta包绘图"><span class="header-section-number">10.2.2</span> 使用selecta包绘图</a></li>
+  </ul></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">参考文献</a></li>
   </ul>
 </nav>
     </div>
@@ -259,7 +259,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">生存分析可视化升级｜零基础 R 绘制顶刊级 KM 生存曲线</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">患者流程图不必再手动画 | 有更优雅的方式</span></h1>
 </div>
 
 
@@ -276,75 +276,59 @@ window.Quarto = {
 </header>
 
 
-<p><br></p>
-<p>Kaplan-Meier（KM）生存曲线是临床研究中使用率最高的统计图表之一，但很多小伙伴在绘图时，总会遇到各种棘手的问题：</p>
+<p><br>
+在临床研究当中，流程图（Flow Diagram）用于展示研究参与者从筛选评估、入组分配、治疗随访到最终分析等各个阶段的流动和排除情况，通常也被称为CONSORT流程图。通过流程图，读者可以清晰地了解患者在各阶段的流动情况，从而判断是否存在组间不均衡、是否引入潜在偏倚，以及最终纳入分析的人群是否合理。</p>
+<p>流程图中数字的准确性与一致性非常重要，但也恰恰是绘制过程中最容易出问题的环节。手动绘制可能出现很多棘手的问题：</p>
 <ul>
-<li><p>传统软件生成的图精细度有限，往往难以满足期刊的要求；</p></li>
-<li><p>对统计原理的理解不够深入，容易出现逻辑、统计方法误用的问题；</p></li>
-<li><p>尝试自己用R绘制生存曲线，却发现网上搜到的代码版本老旧、片段零散，难以使用…</p></li>
+<li>耗时费力，抄录和计算过程一不小心就会出错，造成前后数字对不上；</li>
+<li>如果原始数据有调整或更新，只能全部重新计算；</li>
+<li>不容易保证流程图的规范性，可能需要多次修改才能满足期刊要求。</li>
 </ul>
-<p>为解决KM生存曲线绘图的难题，我们从核心概念、工具和实例三方面详细介绍，即使是零基础也能轻松绘制顶刊级生存曲线。</p>
-<section id="生存曲线中的核心概念" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="生存曲线中的核心概念"><span class="header-section-number">1.1</span> 生存曲线中的核心概念</h2>
-<p>为避免统计和绘图出现错误，首先要深入理解KM生存分析的三个核心概念：</p>
+<p>RCT有专业的统计团队，不用担心这些问题。但对于研究者自己的观察性研究，就亟需一个有效的解决方案。</p>
+<section id="如何高效地绘制流程图" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="如何高效地绘制流程图"><span class="header-section-number">10.1</span> 如何高效地绘制流程图？</h2>
+<p>流程图应该符合什么样的规范？CONSORT和STROBE指南（分别是RCT和观察性研究的报告规范）都给了明确的建议：</p>
 <ul>
-<li>结局事件（Event）</li>
+<li>CONSORT:流程图的具体形式和内容可根据试验的具体特点而有所不同。例如，许多手术或疫苗接种的试验并不包含中止参与的可能性。尽管CONSORT强烈建议使用流程图来说明研究期间的参与者流动情况，但目前尚无统一、规定的格式。<span class="citation" data-cites="hopewell_consort_2025"><sup><a href="#ref-hopewell_consort_2025" role="doc-biblioref">1</a></sup></span></li>
+<li>STROBE:流程图应包括主要结果，如主要结局的事件数。虽然我们建议使用流程图，特别是对于复杂的观察性研究，但我们不提出流程图的特定格式。<span class="citation" data-cites="vandenbroucke_strengthening_2007"><sup><a href="#ref-vandenbroucke_strengthening_2007" role="doc-biblioref">2</a></sup></span></li>
 </ul>
-<p>生存分析的结局事件不局限于患者死亡，临床研究中复发、疾病进展等均可定义为终点结局。通常用1代表发生结局事件，0代表未发生事件或删失。</p>
-<ul>
-<li>删失数据（Censored）</li>
-</ul>
-<p>研究随访过程中，部分受试者因失访、主动退出研究、随访截止仍未发生结局等原因，无法观测到终点事件，这类数据即为删失数据。</p>
-<p>KM生存曲线的核心优势就在于可以妥善处理删失数据，最大限度保留原始样本信息，规避数据浪费和统计偏倚，让分析结果更真实可靠。KM曲线上的阶梯下降，代表有受试者发生了结局事件；图中的删失标记（通常用“+”表示）代表删失个体，此时曲线阶梯不下降。</p>
-<ul>
-<li>Log-rank 检验（对数秩检验）</li>
-</ul>
-<p>KM生存分析通过Log-rank检验比较组间是否存在统计学差异。其原理是在每个发生终点事件的时间点确定当前的风险集（也就是到这一刻还没有出现结局事件、也没有失访，依然有可能发生目标结局的受试者），计算出各组实际发生事件数 O 和假设组间无差异时的理论期望事件数 E。汇总所有时间点的信息，结合风险集计算的方差 V 得出卡方统计量，然后利用卡方分布得到 P 值。</p>
-<p><span class="math display">\[\chi^2 = \dfrac{(O_1 - E_1)^2}{V}\]</span></p>
-<p>KM曲线本身无法获得HR值及其置信区间，若需要HR值，可使用Cox比例风险模型来计算。</p>
+<p>没有统一的格式，又要满足规范的要求，该如何实现呢？使用专业的R语言包是最有效的解决方案。目前最常用的包是consort，可以很便捷地创建流程图，报告患者的分配情况。另一个有用的包是2026年才正式上线的selecta，它通过依次定义纳入和排除标准、研究组别和终点指标来构建流程图，原生支持CONSORT、STROBE标准。</p>
+<p>使用consort包和selecta包绘制流程图完全不用担心格式是否规范的问题，但前提是我们需要准备一份标准的数据集，这也是保证流程图准确性和一致性所必需的。下面的实例列出的数据格式可供参考。</p>
 </section>
-<section id="为什么选择ggsurvfit包绘制km生存曲线" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="为什么选择ggsurvfit包绘制km生存曲线"><span class="header-section-number">1.2</span> 为什么选择ggsurvfit包绘制KM生存曲线？</h2>
-<p>与传统统计软件相比，R语言能够实现高度灵活的可视化调整，生成符合期刊要求的高质量图。目前survival+survminer包是绘制KM曲线的主流，一键出图，简洁美观，但它的问题在于和ggplot2兼容性差，细节调整不够灵活。我们也可以直接使用ggplot2基础函数绘图，但过程相对复杂。</p>
-<p>ggsurvfit包可以很好地解决了这一问题，它完全基于ggplot2语法，代码简洁优雅，专门绘制KM生存曲线、累积发生率曲线，细节调整更加地灵活。</p>
-<p>一般情况下，我们可以用survival+survminer进行探索性的分析，最终出图则使用ggsurvfit包。</p>
-</section>
-<section id="生存曲线实例" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="生存曲线实例"><span class="header-section-number">1.3</span> 生存曲线实例</h2>
-<p>本例将用到的packages如下:</p>
+<section id="实例" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="实例"><span class="header-section-number">10.2</span> 实例</h2>
+<p>首先加载必要的包。</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载必要的包</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggsurvfit)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(consort)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(selecta)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>本例用到的模拟数据df如<a href="#tbl-survival-data" class="quarto-xref">Table&nbsp;<span>1.1</span></a>所示，包括709名患者的随访时间（month）、是否发生结局事件（event）和分组（group），绘制生存曲线将用到以上3个变量。数据中还包括了sex, age_group, race等变量，在以后的cox回归分析中可以作为协变量纳入模型。</p>
+<p>本例用到的数据如<a href="#tbl-flow-diagram-data" class="quarto-xref">Table&nbsp;<span>10.1</span></a>所示。</p>
 <div class="cell" data-layout-align="center">
-<div id="tbl-survival-data" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<div id="tbl-flow-diagram-data" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-survival-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1.1: 生存曲线数据（前10行）
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flow-diagram-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10.1: 模拟数据（前10行）
 </figcaption>
-<div aria-describedby="tbl-survival-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="tbl-flow-diagram-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="rmhdaoigbo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rmhdaoigbo table {
+<div id="ichnwyugcc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ichnwyugcc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rmhdaoigbo thead, #rmhdaoigbo tbody, #rmhdaoigbo tfoot, #rmhdaoigbo tr, #rmhdaoigbo td, #rmhdaoigbo th {
+#ichnwyugcc thead, #ichnwyugcc tbody, #ichnwyugcc tfoot, #ichnwyugcc tr, #ichnwyugcc td, #ichnwyugcc th {
   border-style: none;
 }
 
-#rmhdaoigbo p {
+#ichnwyugcc p {
   margin: 0;
   padding: 0;
 }
 
-#rmhdaoigbo .gt_table {
+#ichnwyugcc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -355,7 +339,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   font-weight: normal;
   font-style: normal;
   background-color: #FFFFFF;
-  width: auto;
+  width: 90%;
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
@@ -370,12 +354,12 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-left-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_caption {
+#ichnwyugcc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rmhdaoigbo .gt_title {
+#ichnwyugcc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -387,7 +371,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-bottom-width: 0;
 }
 
-#rmhdaoigbo .gt_subtitle {
+#ichnwyugcc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -399,7 +383,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-top-width: 0;
 }
 
-#rmhdaoigbo .gt_heading {
+#ichnwyugcc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -411,13 +395,13 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_bottom_border {
+#ichnwyugcc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_col_headings {
+#ichnwyugcc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -432,7 +416,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_col_heading {
+#ichnwyugcc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -452,7 +436,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   overflow-x: hidden;
 }
 
-#rmhdaoigbo .gt_column_spanner_outer {
+#ichnwyugcc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -464,15 +448,15 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   padding-right: 4px;
 }
 
-#rmhdaoigbo .gt_column_spanner_outer:first-child {
+#ichnwyugcc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rmhdaoigbo .gt_column_spanner_outer:last-child {
+#ichnwyugcc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rmhdaoigbo .gt_column_spanner {
+#ichnwyugcc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -484,11 +468,11 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   width: 100%;
 }
 
-#rmhdaoigbo .gt_spanner_row {
+#ichnwyugcc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rmhdaoigbo .gt_group_heading {
+#ichnwyugcc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -514,7 +498,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   text-align: left;
 }
 
-#rmhdaoigbo .gt_empty_group_heading {
+#ichnwyugcc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -529,15 +513,15 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   vertical-align: middle;
 }
 
-#rmhdaoigbo .gt_from_md > :first-child {
+#ichnwyugcc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rmhdaoigbo .gt_from_md > :last-child {
+#ichnwyugcc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rmhdaoigbo .gt_row {
+#ichnwyugcc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -556,7 +540,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   overflow-x: hidden;
 }
 
-#rmhdaoigbo .gt_stub {
+#ichnwyugcc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -569,7 +553,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   padding-right: 5px;
 }
 
-#rmhdaoigbo .gt_stub_row_group {
+#ichnwyugcc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -583,15 +567,15 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   vertical-align: top;
 }
 
-#rmhdaoigbo .gt_row_group_first td {
+#ichnwyugcc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rmhdaoigbo .gt_row_group_first th {
+#ichnwyugcc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rmhdaoigbo .gt_summary_row {
+#ichnwyugcc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -601,16 +585,16 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   padding-right: 5px;
 }
 
-#rmhdaoigbo .gt_first_summary_row {
+#ichnwyugcc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_first_summary_row.thick {
+#ichnwyugcc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rmhdaoigbo .gt_last_summary_row {
+#ichnwyugcc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -620,7 +604,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_grand_summary_row {
+#ichnwyugcc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -630,7 +614,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   padding-right: 5px;
 }
 
-#rmhdaoigbo .gt_first_grand_summary_row {
+#ichnwyugcc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -640,7 +624,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-top-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_last_grand_summary_row_top {
+#ichnwyugcc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -650,11 +634,11 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_striped {
+#ichnwyugcc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rmhdaoigbo .gt_table_body {
+#ichnwyugcc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -663,7 +647,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_footnotes {
+#ichnwyugcc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -677,7 +661,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_footnote {
+#ichnwyugcc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -686,7 +670,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   padding-right: 5px;
 }
 
-#rmhdaoigbo .gt_sourcenotes {
+#ichnwyugcc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -700,7 +684,7 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#rmhdaoigbo .gt_sourcenote {
+#ichnwyugcc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -708,72 +692,72 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
   padding-right: 5px;
 }
 
-#rmhdaoigbo .gt_left {
+#ichnwyugcc .gt_left {
   text-align: left;
 }
 
-#rmhdaoigbo .gt_center {
+#ichnwyugcc .gt_center {
   text-align: center;
 }
 
-#rmhdaoigbo .gt_right {
+#ichnwyugcc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rmhdaoigbo .gt_font_normal {
+#ichnwyugcc .gt_font_normal {
   font-weight: normal;
 }
 
-#rmhdaoigbo .gt_font_bold {
+#ichnwyugcc .gt_font_bold {
   font-weight: bold;
 }
 
-#rmhdaoigbo .gt_font_italic {
+#ichnwyugcc .gt_font_italic {
   font-style: italic;
 }
 
-#rmhdaoigbo .gt_super {
+#ichnwyugcc .gt_super {
   font-size: 65%;
 }
 
-#rmhdaoigbo .gt_footnote_marks {
+#ichnwyugcc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rmhdaoigbo .gt_asterisk {
+#ichnwyugcc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rmhdaoigbo .gt_indent_1 {
+#ichnwyugcc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rmhdaoigbo .gt_indent_2 {
+#ichnwyugcc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rmhdaoigbo .gt_indent_3 {
+#ichnwyugcc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rmhdaoigbo .gt_indent_4 {
+#ichnwyugcc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rmhdaoigbo .gt_indent_5 {
+#ichnwyugcc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rmhdaoigbo .katex-display {
+#ichnwyugcc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rmhdaoigbo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ichnwyugcc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -781,149 +765,105 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
 <table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
-<th id="new_id" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">new_id</th>
-<th id="group" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">group</th>
-<th id="month" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">month</th>
-<th id="event" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">event</th>
-<th id="sex" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">sex</th>
-<th id="age_group" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">age_group</th>
-<th id="race" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">race</th>
-<th id="iss_stage" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">iss_stage</th>
-<th id="myeloma_type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">myeloma_type</th>
-<th id="cytogenetic_risk" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">cytogenetic_risk</th>
-<th id="ecog_score" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">ecog_score</th>
+<th id="trialno" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">trialno</th>
+<th id="exclusion" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">exclusion</th>
+<th id="arm3" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">arm3</th>
+<th id="subjid_dosed" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">subjid_dosed</th>
+<th id="subjid_notdosed" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">subjid_notdosed</th>
+<th id="no_value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">no_value</th>
+<th id="itt_analysis" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">itt_analysis</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="new_id">A000</td>
-<td class="gt_row gt_left" headers="group">Treatment</td>
-<td class="gt_row gt_right" headers="month">1.76</td>
-<td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="sex">Male</td>
-<td class="gt_row gt_left" headers="age_group">≥65-year</td>
-<td class="gt_row gt_left" headers="race">White</td>
-<td class="gt_row gt_left" headers="iss_stage">II</td>
-<td class="gt_row gt_left" headers="myeloma_type">NA</td>
-<td class="gt_row gt_left" headers="cytogenetic_risk">High</td>
-<td class="gt_row gt_left" headers="ecog_score">0</td>
+<td class="gt_row gt_center" headers="trialno">1086</td>
+<td class="gt_row gt_center" headers="exclusion">NA</td>
+<td class="gt_row gt_center" headers="arm3">Placebo</td>
+<td class="gt_row gt_center" headers="subjid_dosed">1086</td>
+<td class="gt_row gt_center" headers="subjid_notdosed">NA</td>
+<td class="gt_row gt_center" headers="no_value">NA</td>
+<td class="gt_row gt_center" headers="itt_analysis">1086</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="new_id">A001</td>
-<td class="gt_row gt_left" headers="group">Treatment</td>
-<td class="gt_row gt_right" headers="month">2.09</td>
-<td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="sex">Female</td>
-<td class="gt_row gt_left" headers="age_group">≥65-year</td>
-<td class="gt_row gt_left" headers="race">White</td>
-<td class="gt_row gt_left" headers="iss_stage">II</td>
-<td class="gt_row gt_left" headers="myeloma_type">IgG</td>
-<td class="gt_row gt_left" headers="cytogenetic_risk">Standard</td>
-<td class="gt_row gt_left" headers="ecog_score">0</td>
+<td class="gt_row gt_center" headers="trialno">1418</td>
+<td class="gt_row gt_center" headers="exclusion">NA</td>
+<td class="gt_row gt_center" headers="arm3">Treatment LD</td>
+<td class="gt_row gt_center" headers="subjid_dosed">1418</td>
+<td class="gt_row gt_center" headers="subjid_notdosed">NA</td>
+<td class="gt_row gt_center" headers="no_value">NA</td>
+<td class="gt_row gt_center" headers="itt_analysis">1418</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="new_id">A002</td>
-<td class="gt_row gt_left" headers="group">Treatment</td>
-<td class="gt_row gt_right" headers="month">0.57</td>
-<td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="sex">Male</td>
-<td class="gt_row gt_left" headers="age_group">≥65-year</td>
-<td class="gt_row gt_left" headers="race">White</td>
-<td class="gt_row gt_left" headers="iss_stage">I</td>
-<td class="gt_row gt_left" headers="myeloma_type">Non-IgG</td>
-<td class="gt_row gt_left" headers="cytogenetic_risk">Standard</td>
-<td class="gt_row gt_left" headers="ecog_score">≥1</td>
+<td class="gt_row gt_center" headers="trialno">1502</td>
+<td class="gt_row gt_center" headers="exclusion">NA</td>
+<td class="gt_row gt_center" headers="arm3">Placebo</td>
+<td class="gt_row gt_center" headers="subjid_dosed">1502</td>
+<td class="gt_row gt_center" headers="subjid_notdosed">NA</td>
+<td class="gt_row gt_center" headers="no_value">Protocol deviation</td>
+<td class="gt_row gt_center" headers="itt_analysis">1502</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="new_id">A003</td>
-<td class="gt_row gt_left" headers="group">Treatment</td>
-<td class="gt_row gt_right" headers="month">0.14</td>
-<td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="sex">Male</td>
-<td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
-<td class="gt_row gt_left" headers="race">White</td>
-<td class="gt_row gt_left" headers="iss_stage">I</td>
-<td class="gt_row gt_left" headers="myeloma_type">IgG</td>
-<td class="gt_row gt_left" headers="cytogenetic_risk">Standard</td>
-<td class="gt_row gt_left" headers="ecog_score">0</td>
+<td class="gt_row gt_center" headers="trialno">1846</td>
+<td class="gt_row gt_center" headers="exclusion">NA</td>
+<td class="gt_row gt_center" headers="arm3">Treatment HD</td>
+<td class="gt_row gt_center" headers="subjid_dosed">1846</td>
+<td class="gt_row gt_center" headers="subjid_notdosed">NA</td>
+<td class="gt_row gt_center" headers="no_value">NA</td>
+<td class="gt_row gt_center" headers="itt_analysis">1846</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="new_id">A004</td>
-<td class="gt_row gt_left" headers="group">Treatment</td>
-<td class="gt_row gt_right" headers="month">0.62</td>
-<td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="sex">Male</td>
-<td class="gt_row gt_left" headers="age_group">≥65-year</td>
-<td class="gt_row gt_left" headers="race">White</td>
-<td class="gt_row gt_left" headers="iss_stage">II</td>
-<td class="gt_row gt_left" headers="myeloma_type">NA</td>
-<td class="gt_row gt_left" headers="cytogenetic_risk">Standard</td>
-<td class="gt_row gt_left" headers="ecog_score">≥1</td>
+<td class="gt_row gt_center" headers="trialno">1303</td>
+<td class="gt_row gt_center" headers="exclusion">NA</td>
+<td class="gt_row gt_center" headers="arm3">Treatment HD</td>
+<td class="gt_row gt_center" headers="subjid_dosed">1303</td>
+<td class="gt_row gt_center" headers="subjid_notdosed">NA</td>
+<td class="gt_row gt_center" headers="no_value">NA</td>
+<td class="gt_row gt_center" headers="itt_analysis">1303</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="new_id">A005</td>
-<td class="gt_row gt_left" headers="group">Treatment</td>
-<td class="gt_row gt_right" headers="month">0.33</td>
-<td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="sex">Male</td>
-<td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
-<td class="gt_row gt_left" headers="race">White</td>
-<td class="gt_row gt_left" headers="iss_stage">I</td>
-<td class="gt_row gt_left" headers="myeloma_type">Non-IgG</td>
-<td class="gt_row gt_left" headers="cytogenetic_risk">High</td>
-<td class="gt_row gt_left" headers="ecog_score">≥1</td>
+<td class="gt_row gt_center" headers="trialno">1838</td>
+<td class="gt_row gt_center" headers="exclusion">NA</td>
+<td class="gt_row gt_center" headers="arm3">Treatment LD</td>
+<td class="gt_row gt_center" headers="subjid_dosed">1838</td>
+<td class="gt_row gt_center" headers="subjid_notdosed">NA</td>
+<td class="gt_row gt_center" headers="no_value">NA</td>
+<td class="gt_row gt_center" headers="itt_analysis">1838</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="new_id">A006</td>
-<td class="gt_row gt_left" headers="group">Treatment</td>
-<td class="gt_row gt_right" headers="month">2.18</td>
-<td class="gt_row gt_right" headers="event">1</td>
-<td class="gt_row gt_left" headers="sex">Female</td>
-<td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
-<td class="gt_row gt_left" headers="race">White</td>
-<td class="gt_row gt_left" headers="iss_stage">I</td>
-<td class="gt_row gt_left" headers="myeloma_type">IgG</td>
-<td class="gt_row gt_left" headers="cytogenetic_risk">Standard</td>
-<td class="gt_row gt_left" headers="ecog_score">0</td>
+<td class="gt_row gt_center" headers="trialno">1399</td>
+<td class="gt_row gt_center" headers="exclusion">NA</td>
+<td class="gt_row gt_center" headers="arm3">Treatment HD</td>
+<td class="gt_row gt_center" headers="subjid_dosed">NA</td>
+<td class="gt_row gt_center" headers="subjid_notdosed">Declined</td>
+<td class="gt_row gt_center" headers="no_value">NA</td>
+<td class="gt_row gt_center" headers="itt_analysis">NA</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="new_id">A007</td>
-<td class="gt_row gt_left" headers="group">Treatment</td>
-<td class="gt_row gt_right" headers="month">2.04</td>
-<td class="gt_row gt_right" headers="event">0</td>
-<td class="gt_row gt_left" headers="sex">Male</td>
-<td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
-<td class="gt_row gt_left" headers="race">White</td>
-<td class="gt_row gt_left" headers="iss_stage">I</td>
-<td class="gt_row gt_left" headers="myeloma_type">Non-IgG</td>
-<td class="gt_row gt_left" headers="cytogenetic_risk">High</td>
-<td class="gt_row gt_left" headers="ecog_score">0</td>
+<td class="gt_row gt_center" headers="trialno">1202</td>
+<td class="gt_row gt_center" headers="exclusion">NA</td>
+<td class="gt_row gt_center" headers="arm3">Placebo</td>
+<td class="gt_row gt_center" headers="subjid_dosed">1202</td>
+<td class="gt_row gt_center" headers="subjid_notdosed">NA</td>
+<td class="gt_row gt_center" headers="no_value">NA</td>
+<td class="gt_row gt_center" headers="itt_analysis">1202</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="new_id">A008</td>
-<td class="gt_row gt_left" headers="group">Treatment</td>
-<td class="gt_row gt_right" headers="month">1.43</td>
-<td class="gt_row gt_right" headers="event">0</td>
-<td class="gt_row gt_left" headers="sex">Female</td>
-<td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
-<td class="gt_row gt_left" headers="race">White</td>
-<td class="gt_row gt_left" headers="iss_stage">II</td>
-<td class="gt_row gt_left" headers="myeloma_type">IgG</td>
-<td class="gt_row gt_left" headers="cytogenetic_risk">Standard</td>
-<td class="gt_row gt_left" headers="ecog_score">≥1</td>
+<td class="gt_row gt_center" headers="trialno">1485</td>
+<td class="gt_row gt_center" headers="exclusion">NA</td>
+<td class="gt_row gt_center" headers="arm3">Placebo</td>
+<td class="gt_row gt_center" headers="subjid_dosed">1485</td>
+<td class="gt_row gt_center" headers="subjid_notdosed">NA</td>
+<td class="gt_row gt_center" headers="no_value">NA</td>
+<td class="gt_row gt_center" headers="itt_analysis">1485</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="new_id">A009</td>
-<td class="gt_row gt_left" headers="group">Treatment</td>
-<td class="gt_row gt_right" headers="month">1.35</td>
-<td class="gt_row gt_right" headers="event">0</td>
-<td class="gt_row gt_left" headers="sex">Female</td>
-<td class="gt_row gt_left" headers="age_group">&lt;65-year</td>
-<td class="gt_row gt_left" headers="race">White</td>
-<td class="gt_row gt_left" headers="iss_stage">I</td>
-<td class="gt_row gt_left" headers="myeloma_type">Non-IgG</td>
-<td class="gt_row gt_left" headers="cytogenetic_risk">High</td>
-<td class="gt_row gt_left" headers="ecog_score">0</td>
+<td class="gt_row gt_center" headers="trialno">1355</td>
+<td class="gt_row gt_center" headers="exclusion">NA</td>
+<td class="gt_row gt_center" headers="arm3">Treatment HD</td>
+<td class="gt_row gt_center" headers="subjid_dosed">1355</td>
+<td class="gt_row gt_center" headers="subjid_notdosed">NA</td>
+<td class="gt_row gt_center" headers="no_value">Outcome missing</td>
+<td class="gt_row gt_center" headers="itt_analysis">1355</td>
 </tr>
 </tbody>
 </table>
@@ -934,81 +874,114 @@ Table&nbsp;1.1: 生存曲线数据（前10行）
 </figure>
 </div>
 </div>
-<p>用ggsurvfit包中的survfit2函数拟合模型，同时我们还可以用coxph函数获得获得风险比HR及相应的置信区间（经计算得到HR 0.37, 95% CI 0.26-0.53），将在生存曲线图中进行标注。</p>
+<p>在以上数据中，trailno是患者编号，每个患者唯一。arm3是分组变量，本例中患者随机分为3组。变量exclusion（筛选期排除）、subjid_notdosed（未治疗原因）和no_value（未评估原因）记录患者是否被排除，如被排除则写明原因，如未被排除进入了下一阶段则用NA表示；subjid_dosed和itt_analysis记录患者是否进入下一阶段（或最终阶段），变量中的患者编号代表进入下一阶段，NA则代表已被排除。这些变量与流程图中的各个阶段一一对应，共同描述了患者从筛选到最终分析的过程。</p>
+<section id="使用consort绘图" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="使用consort绘图"><span class="header-section-number">10.2.1</span> 使用consort绘图</h3>
+<p>使用consort包绘图需要先用set_consort_defaults()设定格式，然后用consort_plot()绘图。运行以下代码可生成如<a href="#fig-consort-flow-diagram" class="quarto-xref">Figure&nbsp;<span>10.1</span></a>所示的流程图。</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">survfit2</span>(<span class="fu">Surv</span>(month, event) <span class="sc">~</span> group, <span class="at">data =</span> df)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>hr <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">relevel</span>(<span class="fu">factor</span>(group), <span class="at">ref =</span> <span class="st">"Placebo"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  (\(x) <span class="fu">coxph</span>(<span class="fu">Surv</span>(month, event) <span class="sc">~</span> group, <span class="at">data =</span> x))() <span class="sc">|&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>hr<span class="sc">$</span>conf.int</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>               exp(coef) exp(-coef) lower .95 upper .95
-groupTreatment 0.3703918   2.699843 0.2602875 0.5270714</code></pre>
-</div>
-</div>
-<p>用ggsurvfit函数绘制KM生存曲线，如<a href="#fig-生存曲线" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>所示。</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> fit <span class="sc">|&gt;</span> <span class="fu">ggsurvfit</span>() <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_confidence_interval</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_pvalue</span>(<span class="st">"annotation"</span>, <span class="at">size =</span> <span class="dv">12</span> <span class="sc">*</span> <span class="fl">0.35</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_censor_mark</span>(<span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_risktable</span>(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">times =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">54</span>, <span class="dv">6</span>),</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">risktable_stats =</span> <span class="st">"{n.risk}({cum.event})"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">risktable_group =</span> <span class="st">"risktable_stats"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">stats_label =</span> <span class="st">"Number at risk (events)"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">combine_groups =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">11</span> <span class="sc">*</span> <span class="fl">0.35</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">theme =</span> <span class="fu">list</span>(</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_risktable_default</span>(),</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">brewer.pal</span>(<span class="dv">9</span>, <span class="st">"Set1"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Treatment A"</span>, <span class="st">"Treatment B"</span>)) <span class="sc">+</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">brewer.pal</span>(<span class="dv">9</span>, <span class="st">"Set1"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Treatment A"</span>, <span class="st">"Treatment B"</span>)) <span class="sc">+</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">54</span>, <span class="dv">6</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>(), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.2</span>)) <span class="sc">+</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">54</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Kaplan-Meier Estimate"</span>,</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Time (month)"</span>,</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Percentage of patients surviving</span><span class="sc">\n</span><span class="st">without disease progression"</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_ggsurvfit_default</span>() <span class="sc">+</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.35</span>),</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.justification =</span> <span class="st">"left"</span>,</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.background =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y.left =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="sc">-</span><span class="dv">18</span>))</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"text"</span>,</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="dv">3</span>,</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fl">0.1</span>,</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Hazard ratio for disease progression or death, 0.37 (95% CI, 0.26-0.53)"</span>,</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">11</span> <span class="sc">*</span> <span class="fl">0.35</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置格式</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set_consort_defaults</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">arrow_gp =</span> <span class="fu">gpar</span>(<span class="at">lwd =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"black"</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">txt_gp =</span> <span class="fu">gpar</span>(<span class="at">fontfamily =</span> <span class="st">"sans"</span>, <span class="at">cex =</span> <span class="fl">0.85</span>, <span class="at">col =</span> <span class="st">"black"</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">box_gp =</span> <span class="fu">gpar</span>(<span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="st">"white"</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">label_txt_gp =</span> <span class="fu">gpar</span>(<span class="at">fontfamily =</span> <span class="st">"sans"</span>, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">col =</span> <span class="st">"#2C3E50"</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">label_box_gp =</span> <span class="fu">gpar</span>(<span class="at">fill =</span> <span class="st">"#D6EAF8"</span>, <span class="at">col =</span> <span class="st">"grey20"</span>, <span class="at">lwd =</span> <span class="fl">0.5</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">arrow_length =</span> <span class="fl">0.1</span>, <span class="co"># default 0.1</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">arrow_type =</span> <span class="st">"closed"</span>, <span class="co"># or "open"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">pad_u =</span> <span class="dv">3</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">bullet =</span> <span class="st">"\u2022"</span>, <span class="co"># bullet character for side box items, e.g. an en dash or a hyphen.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">parse_markup =</span> <span class="cn">TRUE</span> <span class="co"># **bold**, *italic*, ^{superscript}, _{subscript}, __underline__) in node labels.</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘图</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">consort_plot</span>(</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">orders =</span> <span class="fu">list</span>(</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">trialno =</span> <span class="st">"Population"</span>),</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">exclusion =</span> <span class="st">"Excluded"</span>),</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">arm3 =</span> <span class="st">"Randomized Patients"</span>),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">subjid_notdosed =</span> <span class="st">"Participants not treated"</span>),</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">subjid_dosed =</span> <span class="st">"Participants treated"</span>),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">no_value =</span> <span class="st">"Reasons for not assessed"</span>),</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">itt_analysis =</span> <span class="st">"Included in the ITT analysis"</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">side_box =</span> <span class="fu">c</span>(<span class="st">"exclusion"</span>, <span class="st">"subjid_notdosed"</span>, <span class="st">"no_value"</span>),</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">allocation =</span> <span class="st">"arm3"</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Screening"</span>, <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Randomization"</span>, <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Follow up"</span>, <span class="st">"5"</span> <span class="ot">=</span> <span class="st">"ITT analysis"</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-生存曲线" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-consort-flow-diagram" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-生存曲线-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01生存分析_files/figure-html/fig-生存曲线-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+<div aria-describedby="fig-consort-flow-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="10流程图_files/figure-html/fig-consort-flow-diagram-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-生存曲线-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.1: ggsurvfit包绘制的KM生存曲线
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-consort-flow-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.1: consort包绘制的流程图
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>add_*()是发挥核心功能的函数，同时我们进行了大量的个体化调整，包括字体、字号、图例位置、坐标轴范围、风险表的统计指标等，最终生成了美观的高质量KM生存曲线。前文中计算得出的HR值及置信区间也已经在图中标注出来了。</p>
+</section>
+<section id="使用selecta包绘图" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="使用selecta包绘图"><span class="header-section-number">10.2.2</span> 使用selecta包绘图</h3>
+<p>运行以下代码可生成由selecta包绘制的流程图，如<a href="#fig-selecta-flow-diagram" class="quarto-xref">Figure&nbsp;<span>10.2</span></a>所示。将selecta生成的流程图保存为pdf或png文件，需要使用其自带的flowsave()函数。</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘图</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>flow <span class="ot">&lt;-</span> <span class="fu">enroll</span>(df, <span class="at">id =</span> <span class="st">"trialno"</span>, <span class="at">label =</span> <span class="st">"Patients were assessed for eligibility"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">phase</span>(<span class="st">"Screen"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exclude</span>(<span class="st">"were excluded"</span>, <span class="at">criterion =</span> <span class="sc">!</span><span class="fu">is.na</span>(exclusion), <span class="at">reasons =</span> <span class="st">"exclusion"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">phase</span>(<span class="st">"Randomization &amp; Follow up"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">allocate</span>(<span class="st">"arm3"</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Were assigned to HD treatment"</span>, <span class="st">"Were assigned to LD treatment"</span>, <span class="st">"Were assigned to placebo"</span>), <span class="at">label =</span> <span class="st">"Underwent randomization"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exclude</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Participants were not treated"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">criterion =</span> <span class="sc">!</span><span class="fu">is.na</span>(subjid_notdosed),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">reasons =</span> <span class="st">"subjid_notdosed"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">included_label =</span> <span class="st">"Participants were treated"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exclude</span>(<span class="st">"Were not assessed"</span>, <span class="at">criterion =</span> <span class="sc">!</span><span class="fu">is.na</span>(no_value), <span class="at">reasons =</span> <span class="st">"no_value"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">phase</span>(<span class="st">"Analysis"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">endpoint</span>(<span class="st">"Were included in the ITT analysis"</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 保存为pdf文件</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">flowsave</span>(</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  flow,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">count_first =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"figs/selecta.pdf"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> <span class="dv">1</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex_side =</span> <span class="fl">0.85</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex_phase =</span> <span class="dv">1</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">box_fill =</span> <span class="st">"white"</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">phase_fill =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">vpad =</span> <span class="fl">0.6</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">margin =</span> <span class="fl">0.25</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">font_family =</span> <span class="st">"Helvetica"</span>,  <span class="co"># "sans", "serif", "mono"</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">number_format =</span> <span class="st">"us"</span> <span class="co"># "eu", "space", "none"</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="fig-selecta-flow-diagram" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-selecta-flow-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="D:/Rproj/statistical_chart/figs/selecta.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-selecta-flow-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.2: selecta包绘制的流程图
+</figcaption>
+</figure>
+</div>
 
 
+</section>
+</section>
+<section id="bibliography" class="level1 unnumbered">
+<h1 class="unnumbered">参考文献</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-hopewell_consort_2025" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Hopewell, S. <em>et al.</em> <a href="https://doi.org/10.1136/bmj-2024-081124"><span>CONSORT</span> 2025 explanation and elaboration: Updated guideline for reporting randomised trials</a>. <em><span>BMJ</span></em> <strong>389</strong>, e081124 (2025).</div>
+</div>
+<div id="ref-vandenbroucke_strengthening_2007" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline"><span class="nocase">Vandenbroucke, J. P. <em>et al.</em></span> <a href="https://doi.org/10.1371/journal.pmed.0040297">Strengthening the reporting of observational studies in epidemiology (<span>STROBE</span>): Explanation and elaboration</a>. <em><span>PLoS</span> Med</em> <strong>4</strong>, e297 (2007).</div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -1414,14 +1387,11 @@ Figure&nbsp;1.1: ggsurvfit包绘制的KM生存曲线
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./09累积发生率图.html" class="pagination-link" aria-label="竞争事件当作删失处理？你可能一直在高估结局事件的发生率">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">竞争事件当作删失处理？你可能一直在高估结局事件的发生率</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02森林图.html" class="pagination-link" aria-label="森林图只会看不会画？从统计概念到R代码一次讲清楚">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">森林图只会看不会画？从统计概念到R代码一次讲清楚</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

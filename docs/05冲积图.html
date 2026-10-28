@@ -172,7 +172,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">前言</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -227,6 +227,12 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="./09累积发生率图.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">竞争事件当作删失处理？你可能一直在高估结局事件的发生率</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10流程图.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">患者流程图不必再手动画 | 有更优雅的方式</span></span></a>
   </div>
 </li>
     </ul>
@@ -298,14 +304,8 @@ div.csl-indent {
 <p>加载必要的包：</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalluvial)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: 程序包'ggalluvial'是用R版本4.6.1 来建造的</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggsankeyfier)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: 程序包'ggsankeyfier'是用R版本4.6.1 来建造的</code></pre>
-</div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalluvial)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggsankeyfier)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="两阶段冲积图" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="两阶段冲积图"><span class="header-section-number">5.3.1</span> 两阶段冲积图</h3>
@@ -318,23 +318,23 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
 </figcaption>
 <div aria-describedby="tbl-2-stage-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="facomwzbtq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#facomwzbtq table {
+<div id="rhcbomduqf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rhcbomduqf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#facomwzbtq thead, #facomwzbtq tbody, #facomwzbtq tfoot, #facomwzbtq tr, #facomwzbtq td, #facomwzbtq th {
+#rhcbomduqf thead, #rhcbomduqf tbody, #rhcbomduqf tfoot, #rhcbomduqf tr, #rhcbomduqf td, #rhcbomduqf th {
   border-style: none;
 }
 
-#facomwzbtq p {
+#rhcbomduqf p {
   margin: 0;
   padding: 0;
 }
 
-#facomwzbtq .gt_table {
+#rhcbomduqf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -360,12 +360,12 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-left-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_caption {
+#rhcbomduqf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#facomwzbtq .gt_title {
+#rhcbomduqf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -377,7 +377,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-bottom-width: 0;
 }
 
-#facomwzbtq .gt_subtitle {
+#rhcbomduqf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -389,7 +389,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-top-width: 0;
 }
 
-#facomwzbtq .gt_heading {
+#rhcbomduqf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -401,13 +401,13 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_bottom_border {
+#rhcbomduqf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_col_headings {
+#rhcbomduqf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -422,7 +422,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_col_heading {
+#rhcbomduqf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -442,7 +442,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   overflow-x: hidden;
 }
 
-#facomwzbtq .gt_column_spanner_outer {
+#rhcbomduqf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -454,15 +454,15 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   padding-right: 4px;
 }
 
-#facomwzbtq .gt_column_spanner_outer:first-child {
+#rhcbomduqf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#facomwzbtq .gt_column_spanner_outer:last-child {
+#rhcbomduqf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#facomwzbtq .gt_column_spanner {
+#rhcbomduqf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -474,11 +474,11 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   width: 100%;
 }
 
-#facomwzbtq .gt_spanner_row {
+#rhcbomduqf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#facomwzbtq .gt_group_heading {
+#rhcbomduqf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -504,7 +504,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   text-align: left;
 }
 
-#facomwzbtq .gt_empty_group_heading {
+#rhcbomduqf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -519,15 +519,15 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   vertical-align: middle;
 }
 
-#facomwzbtq .gt_from_md > :first-child {
+#rhcbomduqf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#facomwzbtq .gt_from_md > :last-child {
+#rhcbomduqf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#facomwzbtq .gt_row {
+#rhcbomduqf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -546,7 +546,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   overflow-x: hidden;
 }
 
-#facomwzbtq .gt_stub {
+#rhcbomduqf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -559,7 +559,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#facomwzbtq .gt_stub_row_group {
+#rhcbomduqf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -573,15 +573,15 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   vertical-align: top;
 }
 
-#facomwzbtq .gt_row_group_first td {
+#rhcbomduqf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#facomwzbtq .gt_row_group_first th {
+#rhcbomduqf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#facomwzbtq .gt_summary_row {
+#rhcbomduqf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -591,16 +591,16 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#facomwzbtq .gt_first_summary_row {
+#rhcbomduqf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_first_summary_row.thick {
+#rhcbomduqf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#facomwzbtq .gt_last_summary_row {
+#rhcbomduqf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -610,7 +610,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_grand_summary_row {
+#rhcbomduqf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -620,7 +620,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#facomwzbtq .gt_first_grand_summary_row {
+#rhcbomduqf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -630,7 +630,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-top-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_last_grand_summary_row_top {
+#rhcbomduqf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -640,11 +640,11 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_striped {
+#rhcbomduqf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#facomwzbtq .gt_table_body {
+#rhcbomduqf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -653,7 +653,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_footnotes {
+#rhcbomduqf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -667,7 +667,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_footnote {
+#rhcbomduqf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -676,7 +676,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#facomwzbtq .gt_sourcenotes {
+#rhcbomduqf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -690,7 +690,7 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#facomwzbtq .gt_sourcenote {
+#rhcbomduqf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -698,72 +698,72 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#facomwzbtq .gt_left {
+#rhcbomduqf .gt_left {
   text-align: left;
 }
 
-#facomwzbtq .gt_center {
+#rhcbomduqf .gt_center {
   text-align: center;
 }
 
-#facomwzbtq .gt_right {
+#rhcbomduqf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#facomwzbtq .gt_font_normal {
+#rhcbomduqf .gt_font_normal {
   font-weight: normal;
 }
 
-#facomwzbtq .gt_font_bold {
+#rhcbomduqf .gt_font_bold {
   font-weight: bold;
 }
 
-#facomwzbtq .gt_font_italic {
+#rhcbomduqf .gt_font_italic {
   font-style: italic;
 }
 
-#facomwzbtq .gt_super {
+#rhcbomduqf .gt_super {
   font-size: 65%;
 }
 
-#facomwzbtq .gt_footnote_marks {
+#rhcbomduqf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#facomwzbtq .gt_asterisk {
+#rhcbomduqf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#facomwzbtq .gt_indent_1 {
+#rhcbomduqf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#facomwzbtq .gt_indent_2 {
+#rhcbomduqf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#facomwzbtq .gt_indent_3 {
+#rhcbomduqf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#facomwzbtq .gt_indent_4 {
+#rhcbomduqf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#facomwzbtq .gt_indent_5 {
+#rhcbomduqf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#facomwzbtq .katex-display {
+#rhcbomduqf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#facomwzbtq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rhcbomduqf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -838,46 +838,46 @@ Table&nbsp;5.1: 两阶段冲积图模拟数据（前10行）
 </div>
 <p>接下来执行绘图代码，生成的冲积图如 <a href="#fig-2-stage-alluvial" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> 所示。</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df_alluvial <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">axis1 =</span> class_19, <span class="at">axis2 =</span> class_26, <span class="at">y =</span> value)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_alluvium</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> class_19),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.025</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">knot.pos =</span> <span class="fl">0.25</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stratum</span>(</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">"Paired"</span>)[<span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>)], <span class="dv">2</span>)),</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.025</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"white"</span>,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fl">0.5</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>)),</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.5</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"stratum"</span>,</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="fu">str_c</span>(<span class="fu">after_stat</span>(stratum), <span class="st">"</span><span class="sc">\n</span><span class="st">N="</span>, <span class="fu">after_stat</span>(count)),</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="fu">if_else</span>(<span class="fu">after_stat</span>(x) <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"black"</span>, <span class="st">"black"</span>)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.4</span>,</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">nudge_x =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="sc">-</span><span class="fl">0.025</span>, <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>class_19))), <span class="fu">rep</span>(<span class="fl">0.025</span>, <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>class_26)))),</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>class_19))), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>class_26))))</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_identity</span>() <span class="sc">+</span> <span class="co">#label使用color本身的颜色</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">"Paired"</span>)[<span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="sc">-</span><span class="dv">2</span>)]) <span class="sc">+</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"class_19"</span>, <span class="st">"class_26"</span>),</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Criteria 2019"</span>, <span class="st">"Criteria 2026"</span>),</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="dv">0</span>)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Reclassification of Biopsies According to the 2019–2026 Criteria"</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="fl">10.5</span>) <span class="sc">+</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df_alluvial <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">axis1 =</span> class_19, <span class="at">axis2 =</span> class_26, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_alluvium</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> class_19),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.025</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">knot.pos =</span> <span class="fl">0.25</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stratum</span>(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">"Paired"</span>)[<span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>)], <span class="dv">2</span>)),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.025</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fl">0.5</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>)),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.5</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"stratum"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="fu">str_c</span>(<span class="fu">after_stat</span>(stratum), <span class="st">"</span><span class="sc">\n</span><span class="st">N="</span>, <span class="fu">after_stat</span>(count)),</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="fu">if_else</span>(<span class="fu">after_stat</span>(x) <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"black"</span>, <span class="st">"black"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.4</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">nudge_x =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="sc">-</span><span class="fl">0.025</span>, <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>class_19))), <span class="fu">rep</span>(<span class="fl">0.025</span>, <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>class_26)))),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>class_19))), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>class_26))))</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_identity</span>() <span class="sc">+</span> <span class="co">#label使用color本身的颜色</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">"Paired"</span>)[<span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="sc">-</span><span class="dv">2</span>)]) <span class="sc">+</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"class_19"</span>, <span class="st">"class_26"</span>),</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Criteria 2019"</span>, <span class="st">"Criteria 2026"</span>),</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="dv">0</span>)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Reclassification of Biopsies According to the 2019–2026 Criteria"</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="fl">10.5</span>) <span class="sc">+</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-2-stage-alluvial" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -903,23 +903,23 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
 </figcaption>
 <div aria-describedby="tbl-3-stage-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="vqgvtckejw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vqgvtckejw table {
+<div id="pjijrrfzfa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pjijrrfzfa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vqgvtckejw thead, #vqgvtckejw tbody, #vqgvtckejw tfoot, #vqgvtckejw tr, #vqgvtckejw td, #vqgvtckejw th {
+#pjijrrfzfa thead, #pjijrrfzfa tbody, #pjijrrfzfa tfoot, #pjijrrfzfa tr, #pjijrrfzfa td, #pjijrrfzfa th {
   border-style: none;
 }
 
-#vqgvtckejw p {
+#pjijrrfzfa p {
   margin: 0;
   padding: 0;
 }
 
-#vqgvtckejw .gt_table {
+#pjijrrfzfa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -945,12 +945,12 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-left-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_caption {
+#pjijrrfzfa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vqgvtckejw .gt_title {
+#pjijrrfzfa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -962,7 +962,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-bottom-width: 0;
 }
 
-#vqgvtckejw .gt_subtitle {
+#pjijrrfzfa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -974,7 +974,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-top-width: 0;
 }
 
-#vqgvtckejw .gt_heading {
+#pjijrrfzfa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -986,13 +986,13 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_bottom_border {
+#pjijrrfzfa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_col_headings {
+#pjijrrfzfa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1007,7 +1007,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_col_heading {
+#pjijrrfzfa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1027,7 +1027,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   overflow-x: hidden;
 }
 
-#vqgvtckejw .gt_column_spanner_outer {
+#pjijrrfzfa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1039,15 +1039,15 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   padding-right: 4px;
 }
 
-#vqgvtckejw .gt_column_spanner_outer:first-child {
+#pjijrrfzfa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vqgvtckejw .gt_column_spanner_outer:last-child {
+#pjijrrfzfa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vqgvtckejw .gt_column_spanner {
+#pjijrrfzfa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1059,11 +1059,11 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   width: 100%;
 }
 
-#vqgvtckejw .gt_spanner_row {
+#pjijrrfzfa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vqgvtckejw .gt_group_heading {
+#pjijrrfzfa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1089,7 +1089,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   text-align: left;
 }
 
-#vqgvtckejw .gt_empty_group_heading {
+#pjijrrfzfa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1104,15 +1104,15 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   vertical-align: middle;
 }
 
-#vqgvtckejw .gt_from_md > :first-child {
+#pjijrrfzfa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vqgvtckejw .gt_from_md > :last-child {
+#pjijrrfzfa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vqgvtckejw .gt_row {
+#pjijrrfzfa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1131,7 +1131,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   overflow-x: hidden;
 }
 
-#vqgvtckejw .gt_stub {
+#pjijrrfzfa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1144,7 +1144,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#vqgvtckejw .gt_stub_row_group {
+#pjijrrfzfa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1158,15 +1158,15 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   vertical-align: top;
 }
 
-#vqgvtckejw .gt_row_group_first td {
+#pjijrrfzfa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vqgvtckejw .gt_row_group_first th {
+#pjijrrfzfa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vqgvtckejw .gt_summary_row {
+#pjijrrfzfa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1176,16 +1176,16 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#vqgvtckejw .gt_first_summary_row {
+#pjijrrfzfa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_first_summary_row.thick {
+#pjijrrfzfa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vqgvtckejw .gt_last_summary_row {
+#pjijrrfzfa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1195,7 +1195,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_grand_summary_row {
+#pjijrrfzfa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1205,7 +1205,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#vqgvtckejw .gt_first_grand_summary_row {
+#pjijrrfzfa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1215,7 +1215,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-top-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_last_grand_summary_row_top {
+#pjijrrfzfa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1225,11 +1225,11 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_striped {
+#pjijrrfzfa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vqgvtckejw .gt_table_body {
+#pjijrrfzfa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1238,7 +1238,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_footnotes {
+#pjijrrfzfa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1252,7 +1252,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_footnote {
+#pjijrrfzfa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1261,7 +1261,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#vqgvtckejw .gt_sourcenotes {
+#pjijrrfzfa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1275,7 +1275,7 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#vqgvtckejw .gt_sourcenote {
+#pjijrrfzfa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1283,72 +1283,72 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#vqgvtckejw .gt_left {
+#pjijrrfzfa .gt_left {
   text-align: left;
 }
 
-#vqgvtckejw .gt_center {
+#pjijrrfzfa .gt_center {
   text-align: center;
 }
 
-#vqgvtckejw .gt_right {
+#pjijrrfzfa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vqgvtckejw .gt_font_normal {
+#pjijrrfzfa .gt_font_normal {
   font-weight: normal;
 }
 
-#vqgvtckejw .gt_font_bold {
+#pjijrrfzfa .gt_font_bold {
   font-weight: bold;
 }
 
-#vqgvtckejw .gt_font_italic {
+#pjijrrfzfa .gt_font_italic {
   font-style: italic;
 }
 
-#vqgvtckejw .gt_super {
+#pjijrrfzfa .gt_super {
   font-size: 65%;
 }
 
-#vqgvtckejw .gt_footnote_marks {
+#pjijrrfzfa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vqgvtckejw .gt_asterisk {
+#pjijrrfzfa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vqgvtckejw .gt_indent_1 {
+#pjijrrfzfa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vqgvtckejw .gt_indent_2 {
+#pjijrrfzfa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vqgvtckejw .gt_indent_3 {
+#pjijrrfzfa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vqgvtckejw .gt_indent_4 {
+#pjijrrfzfa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vqgvtckejw .gt_indent_5 {
+#pjijrrfzfa .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vqgvtckejw .katex-display {
+#pjijrrfzfa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vqgvtckejw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pjijrrfzfa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1437,76 +1437,76 @@ Table&nbsp;5.2: 三阶段冲积图模拟数据（前10行）
 <h4 data-number="5.3.2.1" class="anchored" data-anchor-id="ggalluvial包绘图"><span class="header-section-number">5.3.2.1</span> ggalluvial包绘图</h4>
 <p>由于变量country_of_origin、reporting_country 和 sequence_type均为字符型，因此绘图前我们需要先将其转换为因子类型并调整其水平，以控制图中的显示顺序。</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_alluvial <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, as_factor),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_of_origin =</span> <span class="fu">fct_relevel</span>(country_of_origin, <span class="fu">c</span>(<span class="st">"Country A1"</span>, <span class="st">"Country A2"</span>, <span class="st">"Country A3"</span>, <span class="st">"Country A4"</span>, <span class="st">"Country A5"</span>, <span class="st">"Country A6"</span>, <span class="st">"Country A7"</span>, <span class="st">"Country A8"</span>)),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">reporting_country =</span> <span class="fu">fct_relevel</span>(reporting_country, <span class="fu">c</span>(<span class="st">"Country B1"</span>, <span class="st">"Country B2"</span>, <span class="st">"Country B3"</span>, <span class="st">"Country B4"</span>, <span class="st">"Country B5"</span>, <span class="st">"Country B6"</span>, <span class="st">"Country B7"</span>)),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sequence_type =</span> <span class="fu">fct_relevel</span>(sequence_type, <span class="fu">c</span>(<span class="st">"ST-ol"</span>, <span class="st">"ST-dn"</span>, <span class="st">"ST-pq"</span>, <span class="st">"ST-el"</span>, <span class="st">"ST-jz"</span>, <span class="st">"ST-br"</span>, <span class="st">"Other"</span>))</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_alluvial <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, as_factor),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_of_origin =</span> <span class="fu">fct_relevel</span>(country_of_origin, <span class="fu">c</span>(<span class="st">"Country A1"</span>, <span class="st">"Country A2"</span>, <span class="st">"Country A3"</span>, <span class="st">"Country A4"</span>, <span class="st">"Country A5"</span>, <span class="st">"Country A6"</span>, <span class="st">"Country A7"</span>, <span class="st">"Country A8"</span>)),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">reporting_country =</span> <span class="fu">fct_relevel</span>(reporting_country, <span class="fu">c</span>(<span class="st">"Country B1"</span>, <span class="st">"Country B2"</span>, <span class="st">"Country B3"</span>, <span class="st">"Country B4"</span>, <span class="st">"Country B5"</span>, <span class="st">"Country B6"</span>, <span class="st">"Country B7"</span>)),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sequence_type =</span> <span class="fu">fct_relevel</span>(sequence_type, <span class="fu">c</span>(<span class="st">"ST-ol"</span>, <span class="st">"ST-dn"</span>, <span class="st">"ST-pq"</span>, <span class="st">"ST-el"</span>, <span class="st">"ST-jz"</span>, <span class="st">"ST-br"</span>, <span class="st">"Other"</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>然后运行以下代码绘图，生成的冲积图如<a href="#fig-3-stage-alluvial" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>所示。</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df_alluvial <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis1 =</span> country_of_origin,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis2 =</span> reporting_country,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis3 =</span> sequence_type,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> number</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_alluvium</span>(</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> country_of_origin),</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.05</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.25</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">knot.pos =</span> <span class="fl">0.25</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Country of Origin"</span>,</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"Darjeeling1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>country_of_origin)), <span class="at">type =</span> <span class="st">"continuous"</span>)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  ggnewscale<span class="sc">::</span><span class="fu">new_scale_fill</span>() <span class="sc">+</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stratum</span>(</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">interaction</span>(<span class="fu">after_stat</span>(x), <span class="fu">after_stat</span>(stratum), <span class="at">sep =</span> <span class="st">"_"</span>)),</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.05</span>,</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"white"</span>,</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.25</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"Darjeeling1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>country_of_origin)), <span class="at">type =</span> <span class="st">"continuous"</span>),</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"FantasticFox1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>reporting_country)), <span class="at">type =</span> <span class="st">"continuous"</span>),</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"Zissou1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>sequence_type)), <span class="at">type =</span> <span class="st">"continuous"</span>)</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="st">"none"</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"stratum"</span>,</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="fu">str_c</span>(<span class="fu">after_stat</span>(stratum), <span class="st">", N="</span>, <span class="fu">after_stat</span>(count)),</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">nudge_x =</span> <span class="fu">after_stat</span>(<span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.05</span>, <span class="fl">0.05</span>)),</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">hjust =</span> <span class="fu">after_stat</span>(<span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span>,</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(</span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"country_of_origin"</span>, <span class="st">"reporting_country"</span>, <span class="st">"sequence_type"</span>),</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Country of Origin"</span>, <span class="st">"Reporting Country"</span>, <span class="st">"Sequence Type"</span>),</span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="dv">0</span>)</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">str_wrap</span>(<span class="st">"Association of Country of Origin, Reporting Country and Sequence_type"</span>, <span class="at">width =</span> <span class="dv">70</span>),</span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="fl">10.5</span>) <span class="sc">+</span></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df_alluvial <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis1 =</span> country_of_origin,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis2 =</span> reporting_country,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis3 =</span> sequence_type,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> number</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_alluvium</span>(</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> country_of_origin),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.05</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.25</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">knot.pos =</span> <span class="fl">0.25</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Country of Origin"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"Darjeeling1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>country_of_origin)), <span class="at">type =</span> <span class="st">"continuous"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  ggnewscale<span class="sc">::</span><span class="fu">new_scale_fill</span>() <span class="sc">+</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_stratum</span>(</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">interaction</span>(<span class="fu">after_stat</span>(x), <span class="fu">after_stat</span>(stratum), <span class="at">sep =</span> <span class="st">"_"</span>)),</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.05</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">0.25</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"Darjeeling1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>country_of_origin)), <span class="at">type =</span> <span class="st">"continuous"</span>),</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"FantasticFox1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>reporting_country)), <span class="at">type =</span> <span class="st">"continuous"</span>),</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"Zissou1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_alluvial<span class="sc">$</span>sequence_type)), <span class="at">type =</span> <span class="st">"continuous"</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="st">"none"</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"stratum"</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="fu">str_c</span>(<span class="fu">after_stat</span>(stratum), <span class="st">", N="</span>, <span class="fu">after_stat</span>(count)),</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">nudge_x =</span> <span class="fu">after_stat</span>(<span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.05</span>, <span class="fl">0.05</span>)),</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">hjust =</span> <span class="fu">after_stat</span>(<span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"country_of_origin"</span>, <span class="st">"reporting_country"</span>, <span class="st">"sequence_type"</span>),</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Country of Origin"</span>, <span class="st">"Reporting Country"</span>, <span class="st">"Sequence Type"</span>),</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="dv">0</span>)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">str_wrap</span>(<span class="st">"Association of Country of Origin, Reporting Country and Sequence_type"</span>, <span class="at">width =</span> <span class="dv">70</span>),</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="fl">10.5</span>) <span class="sc">+</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-3-stage-alluvial" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1525,18 +1525,18 @@ Figure&nbsp;5.2: ggalluvial包绘制的三阶段冲积图
 <h4 data-number="5.3.2.2" class="anchored" data-anchor-id="ggsankeyfier包绘图"><span class="header-section-number">5.3.2.2</span> ggsankeyfier包绘图</h4>
 <p>正式绘图前我们同样需要对数据进行处理。除了将以上提到的三个变量转换为因子类型并调整其水平外，还需要按照ggsankeyfier的要求将数据转换为长格式，如<a href="#tbl-3-stage-data-adjusted" class="quarto-xref">Table&nbsp;<span>5.3</span></a>所示。</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_sankey <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, as_factor),</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_of_origin =</span> <span class="fu">fct_relevel</span>(country_of_origin, <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"Country A1"</span>, <span class="st">"Country A2"</span>, <span class="st">"Country A3"</span>, <span class="st">"Country A4"</span>, <span class="st">"Country A5"</span>, <span class="st">"Country A6"</span>, <span class="st">"Country A7"</span>, <span class="st">"Country A8"</span>))),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">reporting_country =</span> <span class="fu">fct_relevel</span>(reporting_country, <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"Country B1"</span>, <span class="st">"Country B2"</span>, <span class="st">"Country B3"</span>, <span class="st">"Country B4"</span>, <span class="st">"Country B5"</span>, <span class="st">"Country B6"</span>, <span class="st">"Country B7"</span>))),</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sequence_type =</span> <span class="fu">fct_relevel</span>(sequence_type, <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"ST-ol"</span>, <span class="st">"ST-dn"</span>, <span class="st">"ST-pq"</span>, <span class="st">"ST-el"</span>, <span class="st">"ST-jz"</span>, <span class="st">"ST-br"</span>, <span class="st">"Other"</span>)))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_stages_longer</span>(</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">stages_from =</span> <span class="fu">c</span>(<span class="st">"country_of_origin"</span>, <span class="st">"reporting_country"</span>, <span class="st">"sequence_type"</span>),</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> <span class="st">"number"</span>,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">additional_aes_from =</span> <span class="fu">c</span>(<span class="st">"country_of_origin"</span>, <span class="st">"reporting_country"</span>, <span class="st">"sequence_type"</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_sankey <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, as_factor),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">country_of_origin =</span> <span class="fu">fct_relevel</span>(country_of_origin, <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"Country A1"</span>, <span class="st">"Country A2"</span>, <span class="st">"Country A3"</span>, <span class="st">"Country A4"</span>, <span class="st">"Country A5"</span>, <span class="st">"Country A6"</span>, <span class="st">"Country A7"</span>, <span class="st">"Country A8"</span>))),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">reporting_country =</span> <span class="fu">fct_relevel</span>(reporting_country, <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"Country B1"</span>, <span class="st">"Country B2"</span>, <span class="st">"Country B3"</span>, <span class="st">"Country B4"</span>, <span class="st">"Country B5"</span>, <span class="st">"Country B6"</span>, <span class="st">"Country B7"</span>))),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sequence_type =</span> <span class="fu">fct_relevel</span>(sequence_type, <span class="fu">rev</span>(<span class="fu">c</span>(<span class="st">"ST-ol"</span>, <span class="st">"ST-dn"</span>, <span class="st">"ST-pq"</span>, <span class="st">"ST-el"</span>, <span class="st">"ST-jz"</span>, <span class="st">"ST-br"</span>, <span class="st">"Other"</span>)))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_stages_longer</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">stages_from =</span> <span class="fu">c</span>(<span class="st">"country_of_origin"</span>, <span class="st">"reporting_country"</span>, <span class="st">"sequence_type"</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> <span class="st">"number"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">additional_aes_from =</span> <span class="fu">c</span>(<span class="st">"country_of_origin"</span>, <span class="st">"reporting_country"</span>, <span class="st">"sequence_type"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div id="tbl-3-stage-data-adjusted" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -1546,23 +1546,23 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
 </figcaption>
 <div aria-describedby="tbl-3-stage-data-adjusted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="gwkoaoidcj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gwkoaoidcj table {
+<div id="tzuvomwsoa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tzuvomwsoa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gwkoaoidcj thead, #gwkoaoidcj tbody, #gwkoaoidcj tfoot, #gwkoaoidcj tr, #gwkoaoidcj td, #gwkoaoidcj th {
+#tzuvomwsoa thead, #tzuvomwsoa tbody, #tzuvomwsoa tfoot, #tzuvomwsoa tr, #tzuvomwsoa td, #tzuvomwsoa th {
   border-style: none;
 }
 
-#gwkoaoidcj p {
+#tzuvomwsoa p {
   margin: 0;
   padding: 0;
 }
 
-#gwkoaoidcj .gt_table {
+#tzuvomwsoa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1588,12 +1588,12 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-left-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_caption {
+#tzuvomwsoa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gwkoaoidcj .gt_title {
+#tzuvomwsoa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1605,7 +1605,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-bottom-width: 0;
 }
 
-#gwkoaoidcj .gt_subtitle {
+#tzuvomwsoa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1617,7 +1617,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-top-width: 0;
 }
 
-#gwkoaoidcj .gt_heading {
+#tzuvomwsoa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1629,13 +1629,13 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_bottom_border {
+#tzuvomwsoa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_col_headings {
+#tzuvomwsoa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1650,7 +1650,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_col_heading {
+#tzuvomwsoa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1670,7 +1670,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   overflow-x: hidden;
 }
 
-#gwkoaoidcj .gt_column_spanner_outer {
+#tzuvomwsoa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1682,15 +1682,15 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   padding-right: 4px;
 }
 
-#gwkoaoidcj .gt_column_spanner_outer:first-child {
+#tzuvomwsoa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gwkoaoidcj .gt_column_spanner_outer:last-child {
+#tzuvomwsoa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gwkoaoidcj .gt_column_spanner {
+#tzuvomwsoa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1702,11 +1702,11 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   width: 100%;
 }
 
-#gwkoaoidcj .gt_spanner_row {
+#tzuvomwsoa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gwkoaoidcj .gt_group_heading {
+#tzuvomwsoa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1732,7 +1732,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   text-align: left;
 }
 
-#gwkoaoidcj .gt_empty_group_heading {
+#tzuvomwsoa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1747,15 +1747,15 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   vertical-align: middle;
 }
 
-#gwkoaoidcj .gt_from_md > :first-child {
+#tzuvomwsoa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gwkoaoidcj .gt_from_md > :last-child {
+#tzuvomwsoa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gwkoaoidcj .gt_row {
+#tzuvomwsoa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1774,7 +1774,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   overflow-x: hidden;
 }
 
-#gwkoaoidcj .gt_stub {
+#tzuvomwsoa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1787,7 +1787,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#gwkoaoidcj .gt_stub_row_group {
+#tzuvomwsoa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1801,15 +1801,15 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   vertical-align: top;
 }
 
-#gwkoaoidcj .gt_row_group_first td {
+#tzuvomwsoa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gwkoaoidcj .gt_row_group_first th {
+#tzuvomwsoa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gwkoaoidcj .gt_summary_row {
+#tzuvomwsoa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1819,16 +1819,16 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#gwkoaoidcj .gt_first_summary_row {
+#tzuvomwsoa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_first_summary_row.thick {
+#tzuvomwsoa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gwkoaoidcj .gt_last_summary_row {
+#tzuvomwsoa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1838,7 +1838,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_grand_summary_row {
+#tzuvomwsoa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1848,7 +1848,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#gwkoaoidcj .gt_first_grand_summary_row {
+#tzuvomwsoa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1858,7 +1858,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-top-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_last_grand_summary_row_top {
+#tzuvomwsoa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1868,11 +1868,11 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_striped {
+#tzuvomwsoa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gwkoaoidcj .gt_table_body {
+#tzuvomwsoa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1881,7 +1881,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-bottom-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_footnotes {
+#tzuvomwsoa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1895,7 +1895,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_footnote {
+#tzuvomwsoa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1904,7 +1904,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#gwkoaoidcj .gt_sourcenotes {
+#tzuvomwsoa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1918,7 +1918,7 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   border-right-color: #D3D3D3;
 }
 
-#gwkoaoidcj .gt_sourcenote {
+#tzuvomwsoa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1926,72 +1926,72 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
   padding-right: 5px;
 }
 
-#gwkoaoidcj .gt_left {
+#tzuvomwsoa .gt_left {
   text-align: left;
 }
 
-#gwkoaoidcj .gt_center {
+#tzuvomwsoa .gt_center {
   text-align: center;
 }
 
-#gwkoaoidcj .gt_right {
+#tzuvomwsoa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gwkoaoidcj .gt_font_normal {
+#tzuvomwsoa .gt_font_normal {
   font-weight: normal;
 }
 
-#gwkoaoidcj .gt_font_bold {
+#tzuvomwsoa .gt_font_bold {
   font-weight: bold;
 }
 
-#gwkoaoidcj .gt_font_italic {
+#tzuvomwsoa .gt_font_italic {
   font-style: italic;
 }
 
-#gwkoaoidcj .gt_super {
+#tzuvomwsoa .gt_super {
   font-size: 65%;
 }
 
-#gwkoaoidcj .gt_footnote_marks {
+#tzuvomwsoa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gwkoaoidcj .gt_asterisk {
+#tzuvomwsoa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gwkoaoidcj .gt_indent_1 {
+#tzuvomwsoa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gwkoaoidcj .gt_indent_2 {
+#tzuvomwsoa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gwkoaoidcj .gt_indent_3 {
+#tzuvomwsoa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gwkoaoidcj .gt_indent_4 {
+#tzuvomwsoa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gwkoaoidcj .gt_indent_5 {
+#tzuvomwsoa .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gwkoaoidcj .katex-display {
+#tzuvomwsoa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gwkoaoidcj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tzuvomwsoa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2121,68 +2121,68 @@ Table&nbsp;5.3: 调整后的三阶段冲积图模拟数据（前10行）
 </div>
 <p>完成数据处理后就可以运行以下代码绘图啦，最终生成的冲积图如<a href="#fig-3-stage-sankey" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>所示。</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘图</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>pos_main <span class="ot">&lt;-</span> <span class="fu">position_sankey</span>(<span class="at">v_space =</span> <span class="st">"auto"</span>, <span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">align =</span> <span class="st">"center"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pos_text_left <span class="ot">&lt;-</span> <span class="fu">position_sankey</span>(<span class="at">v_space =</span> <span class="st">"auto"</span>, <span class="at">nudge_x =</span> <span class="sc">-</span><span class="fl">0.05</span>, <span class="at">align =</span> <span class="st">"center"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>pos_text_right <span class="ot">&lt;-</span> <span class="fu">position_sankey</span>(<span class="at">v_space =</span> <span class="st">"auto"</span>, <span class="at">nudge_x =</span> <span class="fl">0.05</span>, <span class="at">align =</span> <span class="st">"center"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df_sankey <span class="sc">|&gt;</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stage, <span class="at">y =</span> number, <span class="at">group =</span> node, <span class="at">connector =</span> connector, <span class="at">edge_id =</span> edge_id)) <span class="sc">+</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sankeyedge</span>(</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> country_of_origin),</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> pos_main,</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sankeynode</span>(</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> node),</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> pos_main</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"sankeynode"</span>,</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="fu">after_stat</span>(<span class="fu">if_else</span>(x <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">sprintf</span>(<span class="st">"%s</span><span class="sc">\n</span><span class="st">N = %d"</span>, node, node_size), <span class="st">""</span>)),</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">node =</span> node, <span class="co">#忽略警告即可</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> pos_text_left,</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="dv">1</span>,</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"sankeynode"</span>,</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="fu">after_stat</span>(<span class="fu">if_else</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">sprintf</span>(<span class="st">"%s</span><span class="sc">\n</span><span class="st">N = %d"</span>, node, node_size), <span class="st">""</span>)),</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">node =</span> node, <span class="co">#忽略警告即可</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> pos_text_right,</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"Darjeeling1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_sankey<span class="sc">$</span>country_of_origin)), <span class="at">type =</span> <span class="st">"continuous"</span>),</span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"FantasticFox1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_sankey<span class="sc">$</span>reporting_country)), <span class="at">type =</span> <span class="st">"continuous"</span>),</span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"Zissou1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_sankey<span class="sc">$</span>sequence_type)), <span class="at">type =</span> <span class="st">"continuous"</span>)</span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># values = c(rev(brewer.pal(8, "Set1")), rev(brewer.pal(7, "Set2")), rev(brewer.pal(7, "Set3"))),</span></span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="st">"none"</span></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(</span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"country_of_origin"</span>, <span class="st">"reporting_country"</span>, <span class="st">"sequence_type"</span>),</span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Country of Origin"</span>, <span class="st">"Reporting Country"</span>, <span class="st">"Sequence Type"</span>),</span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="dv">0</span>)</span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">str_wrap</span>(<span class="st">"Association of Country of Origin, Reporting Country and Sequence_type"</span>, <span class="at">width =</span> <span class="dv">70</span>),</span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Country of Origin"</span></span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="fl">10.5</span>) <span class="sc">+</span></span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 绘图</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pos_main <span class="ot">&lt;-</span> <span class="fu">position_sankey</span>(<span class="at">v_space =</span> <span class="st">"auto"</span>, <span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">align =</span> <span class="st">"center"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>pos_text_left <span class="ot">&lt;-</span> <span class="fu">position_sankey</span>(<span class="at">v_space =</span> <span class="st">"auto"</span>, <span class="at">nudge_x =</span> <span class="sc">-</span><span class="fl">0.05</span>, <span class="at">align =</span> <span class="st">"center"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>pos_text_right <span class="ot">&lt;-</span> <span class="fu">position_sankey</span>(<span class="at">v_space =</span> <span class="st">"auto"</span>, <span class="at">nudge_x =</span> <span class="fl">0.05</span>, <span class="at">align =</span> <span class="st">"center"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df_sankey <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stage, <span class="at">y =</span> number, <span class="at">group =</span> node, <span class="at">connector =</span> connector, <span class="at">edge_id =</span> edge_id)) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sankeyedge</span>(</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> country_of_origin),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> pos_main,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sankeynode</span>(</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> node),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> pos_main</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"sankeynode"</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="fu">after_stat</span>(<span class="fu">if_else</span>(x <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">sprintf</span>(<span class="st">"%s</span><span class="sc">\n</span><span class="st">N = %d"</span>, node, node_size), <span class="st">""</span>)),</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">node =</span> node, <span class="co">#忽略警告即可</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> pos_text_left,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="dv">1</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">"sankeynode"</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="fu">after_stat</span>(<span class="fu">if_else</span>(x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">sprintf</span>(<span class="st">"%s</span><span class="sc">\n</span><span class="st">N = %d"</span>, node, node_size), <span class="st">""</span>)),</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">node =</span> node, <span class="co">#忽略警告即可</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> pos_text_right,</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"Darjeeling1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_sankey<span class="sc">$</span>country_of_origin)), <span class="at">type =</span> <span class="st">"continuous"</span>),</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"FantasticFox1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_sankey<span class="sc">$</span>reporting_country)), <span class="at">type =</span> <span class="st">"continuous"</span>),</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>      wesanderson<span class="sc">::</span><span class="fu">wes_palette</span>(<span class="st">"Zissou1"</span>, <span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df_sankey<span class="sc">$</span>sequence_type)), <span class="at">type =</span> <span class="st">"continuous"</span>)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># values = c(rev(brewer.pal(8, "Set1")), rev(brewer.pal(7, "Set2")), rev(brewer.pal(7, "Set3"))),</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">guide =</span> <span class="st">"none"</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"country_of_origin"</span>, <span class="st">"reporting_country"</span>, <span class="st">"sequence_type"</span>),</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Country of Origin"</span>, <span class="st">"Reporting Country"</span>, <span class="st">"Sequence Type"</span>),</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="dv">0</span>)</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">str_wrap</span>(<span class="st">"Association of Country of Origin, Reporting Country and Sequence_type"</span>, <span class="at">width =</span> <span class="dv">70</span>),</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Country of Origin"</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="fl">10.5</span>) <span class="sc">+</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-3-stage-sankey" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
